@@ -1,0 +1,29 @@
+{
+  "name": "ai-first",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local memory workspace for AI-assisted repositories.",
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c",
+    "check": "tsc --noEmit",
+    "docs:build": "pnpm --filter @ai-first/site build",
+    "docs:dev": "pnpm --filter @ai-first/site dev",
+    "docs:start": "pnpm --filter @ai-first/site start",
+    "docs:typecheck": "pnpm --filter @ai-first/site typecheck",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "install:local": "sh scripts/install.sh",
+    "lint": "oxlint .",
+    "test": "pnpm build && vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "rolldown": "^1.2.3",
+    "typescript": "latest",
+    "vitest": "^4.1.10"
+  },
+  "packageManager": "pnpm@11.21.0"
+}

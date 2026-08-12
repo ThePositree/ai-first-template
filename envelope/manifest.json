@@ -1,0 +1,8 @@
+{
+  "id": "default",
+  "name": "AI-first default project envelope",
+  "version": "0.1.0",
+  "description": "The default installable AI-first memory and maintenance envelope.",
+  "entryInstructions": "files/AGENTS.md",
+  "filesRoot": "files"
+}

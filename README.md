@@ -1,29 +1,34 @@
-# Project Name
+# ai-first
 
-This project has not been initialized yet.
+`ai-first` installs a small repository memory layer for AI-assisted projects. It
+does not replace the agent's existing skills or change how the owner talks to
+the agent; it gives the agent durable local context.
 
-If `.bootstrap/FIRST_RUN.md` exists, the first AI agent should ask the owner to
-describe the project in their own words, then fill the product, task, and
-architecture documents.
+The goal is less repeated explanation from the owner and more informed,
+confident agent work across chats.
 
-After bootstrap, replace this README with a concise public project overview:
+The first implementation is intentionally local and inspectable: installed
+projects get `AGENTS.md` plus `.ai-first` memory. No global CLI, binary, `npx`,
+or `node_modules` is required inside the target repository.
 
-- what the project is;
-- who it is for;
-- how to run it;
-- where key docs live;
-- current status and major constraints.
+## Repository Shape
 
-## Documentation Map
+- `envelope/files` - the preserved first-run envelope installed into other
+  repositories.
+- `.ai-first/context` - project memory for agents.
+- `src/installer` - TypeScript source for the installer.
+- `src/lib/install-plan.ts` - shared installer planning and apply logic.
+- `scripts/install.sh` - draft public install entrypoint for local dogfooding.
+- `site` - Next.js documentation website.
+- `rolldown.config.mjs` - Rolldown build config for the installer artifact.
+- `mise.toml` - pinned project tool versions.
 
-- `AGENTS.md` - operating manual for AI agents.
-- `docs/product/PROJECT_BRIEF.md` - product source of truth.
-- `docs/product/VISION.md` - direction, goals, and non-goals.
-- `docs/product/REQUIREMENTS.md` - functional and non-functional requirements.
-- `docs/architecture/OVERVIEW.md` - system shape and boundaries.
-- `docs/tasks/ROADMAP.md` - owner-defined milestones.
-- `docs/tasks/IN_PROGRESS.md` - active work only.
-- `docs/tasks/BACKLOG.md` - approved unfinished work.
-- `docs/tasks/IDEAS.md` - ideas, not approved tasks.
-- `docs/decisions/` - architecture decision records.
-- `CHANGELOG.md` - recent project history.
+## Useful Commands
+
+```bash
+pnpm install
+pnpm build
+pnpm test
+pnpm docs:build
+pnpm install:local -- tmp/demo-project
+```
