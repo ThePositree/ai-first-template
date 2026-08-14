@@ -11,6 +11,9 @@ The first implementation is intentionally local and inspectable: installed
 projects get `AGENTS.md` plus `.ai-first` memory. No global CLI, binary, `npx`,
 or `node_modules` is required inside the target repository.
 
+Installed memory covers project context, active work, backlog, ideas,
+changelog/archive history, ADRs, and post-mortem templates.
+
 ## Repository Shape
 
 - `envelope/files` - the preserved first-run envelope installed into other

@@ -6,6 +6,9 @@ Recent project history. Newest entries first. Use dates in `YYYY-MM-DD` format.
 
 ## 2026-08-07
 
+- Added an independent Impeccable redesign for the documentation site using the
+  Repository Flight Recorder direction, with `site/PRODUCT.md`, `site/DESIGN.md`,
+  and the Impeccable design sidecar recorded.
 - Completed the backlog implementation pass: installer planning/apply engine,
   `AGENTS.md` injection, Vitest acceptance tests, draft public install script,
   pnpm workspace setup, VoidZero tooling, and Next.js documentation site.

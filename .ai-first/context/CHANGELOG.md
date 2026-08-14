@@ -2,8 +2,37 @@
 
 Recent project history. Newest entries first.
 
+Keep this file focused on recent hot-read history. When it grows past roughly
+the newest 25 dated entries or becomes too heavy for fresh-chat recovery, move
+the oldest complete dated sections into `CHANGELOG_ARCHIVE.md`. Preserve
+newest-first order in both files.
+
+## 2026-08-13
+
+- Completed every approved backlog item by adding changelog archive rotation,
+  backlog priority semantics, progressive memory graph design, idea lifecycle
+  metadata, incident response and post-mortem memory, clearer owner-agent
+  boundaries, relevant-idea reminders, richer ADR templates, and memory hygiene
+  guidance.
+- Added `CHANGELOG_ARCHIVE.md`, post-mortem templates, a progressive-memory spec,
+  and a source ADR template; synchronized matching installed-envelope guidance
+  under `envelope/files`.
+- Added focused installer assertions for the new managed envelope memory files.
+- Cleared completed active work and backlog state after the implementation pass.
+- Scanned the `crypt` prototype as the original AI-first ancestor and transferred
+  reusable memory/task-system improvements into current project memory.
+- Added approved backlog items for changelog archive rotation, backlog priority
+  semantics, progressive memory graph design, idea lifecycle metadata, incident
+  response and post-mortem memory, clearer owner-agent boundaries,
+  relevant-idea reminders, ADR template enrichment, and memory hygiene guidance.
+- Removed the proposed one-off command policy and dropped the remaining
+  transferred experimental ideas after owner review.
+
 ## 2026-08-07
 
+- Added an independent Impeccable redesign for the documentation site using the
+  Repository Flight Recorder direction, with `site/PRODUCT.md`, `site/DESIGN.md`,
+  and the Impeccable design sidecar recorded.
 - Completed the backlog implementation pass: installer planning/apply engine,
   `AGENTS.md` injection, Vitest acceptance tests, draft public install script,
   pnpm workspace setup, VoidZero tooling, and Next.js documentation site.

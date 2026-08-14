@@ -6,8 +6,5 @@
     "node_modules/**",
     "site/.next/**",
     "tmp/**"
-  ],
-  "printWidth": 100,
-  "semi": true,
-  "singleQuote": false
+  ]
 }

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-13T06:55:00.000Z",
+  "title": "Design System: AI-first",
+  "extensions": {
+    "colorMeta": {
+      "console-bg": {
+        "role": "primary",
+        "displayName": "Console Black-Blue",
+        "canonical": "#070b10",
+        "tonalRamp": [
+          "oklch(15% 0.018 245)",
+          "oklch(23% 0.022 245)",
+          "oklch(31% 0.026 245)",
+          "oklch(43% 0.03 245)",
+          "oklch(55% 0.025 245)",
+          "oklch(68% 0.018 245)",
+          "oklch(82% 0.012 245)",
+          "oklch(95% 0.006 245)"
+        ]
+      },
+      "instrument-cyan": {
+        "role": "primary",
+        "displayName": "Instrument Cyan",
+        "canonical": "#67e8f9",
+        "tonalRamp": [
+          "oklch(15% 0.055 220)",
+          "oklch(25% 0.075 220)",
+          "oklch(37% 0.095 220)",
+          "oklch(50% 0.11 220)",
+          "oklch(64% 0.105 220)",
+          "oklch(76% 0.085 220)",
+          "oklch(87% 0.055 220)",
+          "oklch(95% 0.03 220)"
+        ]
+      },
+      "owner-amber": {
+        "role": "secondary",
+        "displayName": "Owner Amber",
+        "canonical": "#fcd34d",
+        "tonalRamp": [
+          "oklch(18% 0.055 80)",
+          "oklch(29% 0.08 80)",
+          "oklch(41% 0.105 80)",
+          "oklch(55% 0.13 80)",
+          "oklch(69% 0.125 80)",
+          "oklch(80% 0.095 80)",
+          "oklch(89% 0.055 80)",
+          "oklch(96% 0.025 80)"
+        ]
+      },
+      "paper-ice": {
+        "role": "neutral",
+        "displayName": "Paper Ice",
+        "canonical": "#eef8ff",
+        "tonalRamp": [
+          "oklch(16% 0.018 235)",
+          "oklch(27% 0.024 235)",
+          "oklch(39% 0.028 235)",
+          "oklch(52% 0.026 235)",
+          "oklch(65% 0.022 235)",
+          "oklch(78% 0.018 235)",
+          "oklch(89% 0.014 235)",
+          "oklch(97% 0.01 235)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#08111a",
+        "tonalRamp": [
+          "oklch(15% 0.016 240)",
+          "oklch(24% 0.02 240)",
+          "oklch(34% 0.022 240)",
+          "oklch(47% 0.024 240)",
+          "oklch(60% 0.02 240)",
+          "oklch(73% 0.015 240)",
+          "oklch(86% 0.01 240)",
+          "oklch(96% 0.006 240)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Recorder Display",
+        "purpose": "Oversized mono uppercase hero lines only."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Large explanatory claims on light and dark sections."
+      },
+      "body": {
+        "displayName": "Readable Body",
+        "purpose": "Owner-readable explanation and card detail."
+      },
+      "label": {
+        "displayName": "Telemetry Label",
+        "purpose": "Commands, states, metadata, nav, chips, and file evidence."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cyan-instrument-glow",
+        "value": "0 0 32px rgba(76,201,255,0.2)",
+        "purpose": "Small powered marks and identity elements."
+      },
+      {
+        "name": "recorder-panel-lift",
+        "value": "0 25px 50px -12px rgba(0,0,0,0.5)",
+        "purpose": "Main dark recovery panel."
+      },
+      {
+        "name": "telemetry-line-glow",
+        "value": "0 0 10px rgba(103,232,249,0.5)",
+        "purpose": "Active file-strip segments inside the recorder."
+      },
+      {
+        "name": "amber-signal-glow",
+        "value": "0 0 24px rgba(252,211,77,0.28)",
+        "purpose": "Locked owner-signal badge only."
+      },
+      {
+        "name": "paper-card-lift",
+        "value": "0 18px 60px rgba(41,80,105,0.08)",
+        "purpose": "File cards on light sections."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-state",
+        "value": "transition: all 150ms ease",
+        "purpose": "Default button and state transition inherited from the button primitive."
+      },
+      {
+        "name": "button-active-nudge",
+        "value": "transform: translateY(1px)",
+        "purpose": "Pressed feedback for non-popup buttons."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Copy Command Button",
+      "kind": "button",
+      "refersTo": "button-copy",
+      "description": "Primary command-copy action used beside the install command.",
+      "html": "<button class=\"ds-button-copy\">Copy command</button>",
+      "css": ".ds-button-copy { height: 2.5rem; border: 0; border-radius: 0.875rem; background: #cffafe; color: #08111a; padding: 0 1.25rem; font-family: var(--font-sans), sans-serif; font-size: 0.875rem; font-weight: 500; transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease; } .ds-button-copy:hover { background: #ffffff; } .ds-button-copy:focus-visible { outline: 0; box-shadow: 0 0 0 2px rgba(103,232,249,0.35); } .ds-button-copy:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Command Field",
+      "kind": "custom",
+      "refersTo": "command-field",
+      "description": "Inset terminal-like field for the install command.",
+      "html": "<code class=\"ds-command-field\">curl -fsSL https://ai-first.dev/install | sh</code>",
+      "css": ".ds-command-field { display: block; overflow-x: auto; border-radius: 0.875rem; background: #020508; color: #cffafe; padding: 0.75rem 1rem; font-family: var(--font-mono), monospace; font-size: 0.875rem; white-space: nowrap; } .ds-command-field:focus-visible { outline: 0; box-shadow: 0 0 0 2px rgba(103,232,249,0.35); }"
+    },
+    {
+      "name": "Telemetry Chip",
+      "kind": "chip",
+      "refersTo": "telemetry-chip",
+      "description": "Small non-interactive pill for install constraints and state tags.",
+      "html": "<span class=\"ds-telemetry-chip\">agent-managed</span>",
+      "css": ".ds-telemetry-chip { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 9999px; color: rgba(207,250,254,0.6); padding: 0.25rem 0.75rem; font-family: var(--font-mono), monospace; font-size: 0.75rem; line-height: 1; }"
+    },
+    {
+      "name": "Recorder Panel",
+      "kind": "card",
+      "refersTo": "recorder-panel",
+      "description": "Signature dark recovery unit that proves fresh-chat continuity.",
+      "html": "<section class=\"ds-recorder-panel\"><header class=\"ds-recorder-panel-header\"><div><div class=\"ds-recorder-label\">recorder unit</div><h3>Fresh chat recovery</h3></div><div class=\"ds-recorder-leds\"><span></span><span></span><span></span></div></header><div class=\"ds-owner-signal\"><div class=\"ds-recorder-label\">owner signal</div><p>Keep going from where we left off.</p></div></section>",
+      "css": ".ds-recorder-panel { overflow: hidden; border-radius: 2rem; border: 1px solid rgba(207,250,254,0.15); background: rgba(12,20,29,0.95); color: #eef8ff; padding: 1.25rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); } .ds-recorder-panel-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; } .ds-recorder-label { font-family: var(--font-mono), monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(207,250,254,0.55); } .ds-recorder-panel h3 { margin: 0.25rem 0 0; font-family: var(--font-sans), sans-serif; font-size: 1.25rem; font-weight: 500; } .ds-recorder-leds { display: flex; gap: 0.5rem; } .ds-recorder-leds span { width: 0.625rem; height: 0.625rem; border-radius: 9999px; background: #67e8f9; box-shadow: 0 0 18px rgba(103,232,249,0.9); } .ds-recorder-leds span:nth-child(2) { background: #fcd34d; box-shadow: 0 0 18px rgba(252,211,77,0.8); } .ds-recorder-leds span:nth-child(3) { background: #6ee7b7; box-shadow: 0 0 18px rgba(110,231,183,0.8); } .ds-owner-signal { margin-top: 1.25rem; border: 1px solid rgba(254,243,199,0.2); border-radius: 1.125rem; background: rgba(254,243,199,0.08); padding: 1rem; } .ds-owner-signal p { margin: 0.5rem 0 0; color: rgba(255,251,235,0.82); font-family: var(--font-sans), sans-serif; font-size: 0.875rem; line-height: 1.5; }"
+    },
+    {
+      "name": "File Telemetry Row",
+      "kind": "custom",
+      "refersTo": "recorder-panel",
+      "description": "Recorder row showing a local file, state, timestamp, and active line strip.",
+      "html": "<article class=\"ds-file-row\"><div class=\"ds-file-row-top\"><span class=\"ds-file-index\">1</span><div><div class=\"ds-file-path\">.ai-first/context/PROJECT.md</div><div class=\"ds-file-state\">product truth</div></div><time>00:01:10</time></div><div class=\"ds-file-track\"><span></span><span></span><span></span></div></article>",
+      "css": ".ds-file-row { display: grid; gap: 0.75rem; border-radius: 1.125rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.045); padding: 0.75rem; color: #eef8ff; } .ds-file-row-top { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: 0.75rem; } .ds-file-index { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 0.5rem; background: rgba(207,250,254,0.1); color: #cffafe; font-family: var(--font-mono), monospace; font-size: 0.75rem; } .ds-file-path { font-family: var(--font-mono), monospace; font-size: 0.875rem; color: #ffffff; } .ds-file-state, .ds-file-row time { font-family: var(--font-mono), monospace; font-size: 0.75rem; color: rgba(207,250,254,0.5); } .ds-file-row time { font-size: 0.65rem; color: rgba(207,250,254,0.45); } .ds-file-track { margin-left: 2.75rem; display: flex; align-items: center; gap: 0.25rem; overflow: hidden; border-radius: 0.5rem; background: #020508; padding: 0 0.5rem; height: 1.75rem; } .ds-file-track span { display: block; height: 1px; width: 4rem; background: rgba(165,243,252,0.55); box-shadow: 0 0 10px rgba(103,232,249,0.5); } .ds-file-track span:nth-child(2) { width: 2rem; } .ds-file-track span:nth-child(3) { width: 5rem; }"
+    },
+    {
+      "name": "Memory File Card",
+      "kind": "card",
+      "refersTo": "memory-card",
+      "description": "Light-section card showing a memory file and its durable role.",
+      "html": "<article class=\"ds-memory-card\"><div><div class=\"ds-memory-path\">.ai-first/context/PROJECT.md</div><div class=\"ds-memory-badge\">product truth</div></div><p>What this repository is building and why it matters.</p></article>",
+      "css": ".ds-memory-card { display: grid; gap: 0.75rem; border: 1px solid #b9d1df; border-radius: 1.125rem; background: #ffffff; color: #08111a; padding: 1rem; box-shadow: 0 18px 60px rgba(41,80,105,0.08); } .ds-memory-path { color: #006da3; font-family: var(--font-mono), monospace; font-size: 0.875rem; } .ds-memory-badge { margin-top: 0.5rem; width: fit-content; border-radius: 9999px; background: #dff3ff; color: #23536c; padding: 0.25rem 0.625rem; font-family: var(--font-mono), monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em; } .ds-memory-card p { margin: 0; color: #40515f; font-family: var(--font-sans), sans-serif; line-height: 1.75; } @media (min-width: 768px) { .ds-memory-card { grid-template-columns: 13rem 1fr; } }"
+    },
+    {
+      "name": "Brand Navigation",
+      "kind": "nav",
+      "refersTo": "recorder-panel",
+      "description": "Sparse console navigation with a powered monogram mark.",
+      "html": "<nav class=\"ds-brand-nav\"><div class=\"ds-brand-lockup\"><div class=\"ds-brand-mark\">AF</div><div><div class=\"ds-brand-name\">AI-first</div><div class=\"ds-brand-subtitle\">repository memory layer</div></div></div><div class=\"ds-nav-links\"><a href=\"#memory\">memory</a><a href=\"#sequence\">sequence</a><a href=\"#install\">install</a></div></nav>",
+      "css": ".ds-brand-nav { display: flex; align-items: center; justify-content: space-between; color: #eef8ff; } .ds-brand-lockup { display: flex; align-items: center; gap: 0.75rem; } .ds-brand-mark { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 0.875rem; border: 1px solid rgba(165,243,252,0.25); background: rgba(103,232,249,0.1); color: #cffafe; font-family: var(--font-mono), monospace; font-size: 0.75rem; box-shadow: 0 0 32px rgba(76,201,255,0.2); } .ds-brand-name { font-family: var(--font-sans), sans-serif; font-weight: 500; letter-spacing: -0.025em; } .ds-brand-subtitle { font-family: var(--font-mono), monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.22em; color: rgba(207,250,254,0.55); } .ds-nav-links { display: flex; align-items: center; gap: 1.5rem; font-family: var(--font-mono), monospace; font-size: 0.75rem; } .ds-nav-links a { color: rgba(207,250,254,0.65); text-decoration: none; } .ds-nav-links a:hover, .ds-nav-links a:focus-visible { color: #cffafe; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Repository Flight Recorder",
+    "overview": "AI-first should look like an instrument that has been running quietly inside the repository: dark, legible, local, and technically specific. The primary world is a recorder console, not a generic AI landing page. It uses a black-blue operating surface, cyan telemetry light, amber owner signal, and visible file strips to make continuity feel inspectable instead of magical in a vague way.\n\nThe interface can leave the console for explanatory sections, but those lighter sections still feel like printed telemetry: cool paper, dark ink, thin blue-gray rules, and compact file labels. The system should make agent memory feel recoverable, durable, and owner-readable.",
+    "keyCharacteristics": [
+      "Dark first viewport with instrument glow, grid texture, and panel depth.",
+      "Cyan is the machine signal; amber is reserved for owner signal and lock state.",
+      "File paths, commands, states, and timestamps use mono typography as evidence.",
+      "Light sections behave like readable recovered records, not marketing proof."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rarity Rule",
+        "body": "Amber should stay rare and specific. Use it for owner signal, locked status, and human-control moments, not for general decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cyan Evidence Rule",
+        "body": "Cyan should mark machine-readable evidence: command lines, telemetry strips, recorder LEDs, and navigational traces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Proof In Mono Rule",
+        "body": "Anything that is a command, file path, state, timestamp, or recorder readout should use mono type.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit Instrument Rule",
+        "body": "Glows must explain state or instrumentation. Do not apply glow to generic decorative shapes unless it reinforces a powered recorder element.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the first impression anchored in the dark recorder console.",
+      "Do use amber only when the owner or owner signal is part of the story.",
+      "Do make file paths, commands, timestamps, and states visibly inspectable.",
+      "Do keep light sections cool and record-like with blue-gray borders and restrained shadows."
+    ],
+    "donts": [
+      "Don't turn this into a generic gradient AI SaaS hero with abstract blobs and broad claims.",
+      "Don't use amber as a general accent or CTA color.",
+      "Don't replace file-strip telemetry with unrelated icons or mascot-style illustration.",
+      "Don't canonize one-off marketing proof patterns such as logos, testimonials, or metrics until the product actually has them."
+    ]
+  }
+}

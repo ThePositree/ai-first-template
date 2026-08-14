@@ -67,6 +67,15 @@ describe("installer", () => {
     expect(manifest.agentCommands).toBeUndefined();
     expect(manifest.managedFiles).toContain(".ai-first/manifest.json");
     expect(manifest.managedFiles).toContain(".ai-first/VERSION");
+    expect(manifest.managedFiles).toContain(".ai-first/context/CHANGELOG_ARCHIVE.md");
+    expect(manifest.managedFiles).toContain(".ai-first/context/post_mortems/_template.md");
+
+    await expect(
+      readFile(path.join(target, ".ai-first", "context", "CHANGELOG_ARCHIVE.md"), "utf8"),
+    ).resolves.toContain("Changelog Archive");
+    await expect(
+      readFile(path.join(target, ".ai-first", "context", "post_mortems", "_template.md"), "utf8"),
+    ).resolves.toContain("Post-Mortem");
 
     const agents = await readFile(path.join(target, "AGENTS.md"), "utf8");
     expect(agents).toContain(".ai-first/README.md");

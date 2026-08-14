@@ -1,9 +1,7 @@
-# ADR-0001: Decision Title
+# ADR-0000: Decision Title
 
 Status: proposed
-
 Date: YYYY-MM-DD
-
 Owner: project owner
 
 ## Context
@@ -20,8 +18,8 @@ What improves, what gets harder, and what future agents must remember?
 
 ## Alternatives Considered
 
-What did we reject, and why?
+- Alternative considered and why it was rejected.
 
 ## References
 
-Related files, issues, chats, specs, changelog entries, or external context.
+- Related files, issues, chats, specs, changelog entries, or external context.
