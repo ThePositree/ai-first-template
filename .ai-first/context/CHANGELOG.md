@@ -7,6 +7,32 @@ the newest 25 dated entries or becomes too heavy for fresh-chat recovery, move
 the oldest complete dated sections into `CHANGELOG_ARCHIVE.md`. Preserve
 newest-first order in both files.
 
+## 2026-08-17
+
+- Replaced the homepage's shelf-only 3D experiment with the approved Repository
+  Memory Terrarium direction: a Blender-authored canonical scene exported into
+  hero, handoff, and archive GLBs, a new `TerrariumScene3D` runtime component,
+  and a 3D-first homepage layout with physical HTML command/prompt/file labels
+  layered into the scenes.
+- Replaced the obsolete agent-lantern mascot direction with a Blender-authored
+  Living Memory Shelf 3D scene, exported `site/public/models/memory-shelf.glb`,
+  and integrated it into the homepage hero as the live object anchor.
+- Simplified the documentation homepage layout by removing the fixed header,
+  narrowing the Lo-fi Memory Board palette, adding generated lo-fi shelf/handoff
+  illustrations, and introducing command-flow entrance motion.
+- Reworked the documentation homepage away from the realistic wooden-shop and
+  agent-lantern direction into a brighter Lo-fi Memory Board design with chunky
+  rounded-square tiles, visible `.ai-first` files, and no 3D mascot in the hero.
+- Completed the homepage agent character rework by creating the canonical
+  Blender-authored `agent-lantern.blend`, exporting
+  `site/public/models/agent-lantern.glb`, loading it through the existing
+  Three.js staging component, and verifying light/dark desktop/mobile renders.
+- Added active follow-up work to redo the homepage agent character through a
+  proper character brief and Blender MCP workflow before final site integration.
+- Removed the accidental persistent npm/Blender generation script from the
+  interrupted attempt; the next agent should not treat that script as project
+  direction.
+
 ## 2026-08-16
 
 - Added a live Three.js agent-lantern character to the documentation homepage

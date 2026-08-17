@@ -2,7 +2,9 @@
 version: 1
 slug: "site-app-page-tsx"
 primary_target: "site/app/page.tsx"
-related_targets: []
+related_targets:
+  - "site/components/terrarium-scene-3d.tsx"
+  - "site/app/globals.css"
 ---
 
 # Surface Brief: Homepage
@@ -11,12 +13,27 @@ Scope: `site/app/page.tsx` documentation homepage.
 
 Mode: Persuade.
 
-Audience and action: owners and vibe coders should understand that AI-first installs local memory and task state into a repository, then copy the install command or keep reading the agent workflow.
+Audience and action: owners and vibe coders should understand that AI-first
+installs local memory and task state into a repository, then copy the install
+command or the existing-repository prompt.
 
-Direction: Cozy Wooden Repository Shop. The first viewport is a full-bleed generated wooden-shop scene with very little text: "One command is enough" and the install command. A live unframed Three.js agent-lantern character floats on the right as the shop keeper, made from warm brass, wood, paper, and glow geometry. The page must not use a website-as-desktop metaphor, shortcut rails, fake OS chrome, a generic SaaS card grid, or long explanation before the visitor sees the atmosphere.
+Direction: Repository Memory Terrarium. The homepage is a pastel 3D clay-paper
+workspace, not a flat site with a mascot or a single decorative object. The
+first viewport has no header: product stamp, direct headline, physical copyable
+command dock, amber pulses, large Blender-authored memory shelf scene, and real
+HTML file labels carry the page.
 
-Memorable moment: the hero feels inhabited by a small lantern-keeper, then an existing repository gets a ready prompt card. The owner installs AI-first, then can ask their current agent to stock `.ai-first` memory files from the codebase and chat context.
+Memorable moment: the install command appears to stock a physical repository
+memory shelf. Scrolling continues through two more related dioramas: handoff
+trays for existing repos and an archive file garden for the durable Markdown
+files.
 
-Constraints: do not mention or copy external brand references; keep commands, paths, task states, and installer constraints exact. Use warm wood, cream paper, brass/amber, and dark shop tones. Every visible UI surface must work in light and dark themes.
+Constraints: do not use the previous realistic wooden-shop PNGs as homepage
+anchors; do not reintroduce the old agent-lantern mascot; do not collapse the
+3D concept back into one model inside a normal page section. Keep commands,
+paths, task states, and installer constraints exact. Preserve a bright readable
+theme and mobile first-viewport 3D visibility.
 
-Unresolved: none.
+Unresolved: future 3D refinements should extend the canonical terrarium scene
+system and may improve the Blender models, but they should not change the
+approved site concept without owner direction.

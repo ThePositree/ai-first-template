@@ -1,205 +1,270 @@
 ---
 name: AI-first
-description: A cozy wooden repository shop where one command opens a warm local memory counter for AI agents.
+description: A pastel 3D clay-paper repository terrarium where real HTML controls sit inside Blender-authored memory scenes.
 colors:
-  shop-bg: "#f0d8ad"
-  shop-band: "#e3c18b"
-  shop-nav: "#25150a"
-  shop-paper: "#f4dfba"
-  shop-paper-strong: "#f9e9cb"
-  shop-chip: "#e7c894"
-  shop-wood: "#5a3218"
-  shop-ink: "#261709"
-  shop-muted: "#715232"
-  shop-amber: "#d9942e"
-  shop-amber-edge: "#9a5d1b"
-  shop-dark-bg: "#130b06"
-  shop-dark-panel: "#2a1a0f"
+  terrarium-bg: "#eef1df"
+  terrarium-band: "#f7ead7"
+  terrarium-paper: "#fff9ea"
+  terrarium-cream: "#fff3d7"
+  terrarium-sage: "#78947f"
+  terrarium-mint: "#b7e6ce"
+  terrarium-sky: "#a7dce3"
+  terrarium-peach: "#f5c6ad"
+  terrarium-coral: "#ec8f7c"
+  terrarium-amber: "#ffc857"
+  terrarium-ink: "#263238"
+  terrarium-muted: "#52665e"
+  terrarium-line: "#263238"
 typography:
   display:
     fontFamily: "var(--font-sans), sans-serif"
-    fontSize: "clamp(3.75rem, 9vw, 7rem)"
-    fontWeight: 900
-    lineHeight: 0.9
-    letterSpacing: "-0.035em"
-  headline:
-    fontFamily: "var(--font-sans), sans-serif"
-    fontSize: "clamp(3rem, 7vw, 5rem)"
+    fontSize: "6rem"
     fontWeight: 900
     lineHeight: 0.96
-    letterSpacing: "-0.03em"
+    letterSpacing: "0"
+  display-mobile:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "2.85rem"
+    fontWeight: 900
+    lineHeight: 0.98
+    letterSpacing: "0"
+  display-small:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "3.2rem"
+    fontWeight: 900
+    lineHeight: 0.98
+    letterSpacing: "0"
+  headline:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "5.2rem"
+    fontWeight: 900
+    lineHeight: 0.96
+    letterSpacing: "0"
+  headline-large:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "5rem"
+    fontWeight: 900
+    lineHeight: 0.96
+    letterSpacing: "0"
+  headline-compact:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "2.7rem"
+    fontWeight: 900
+    lineHeight: 0.96
+    letterSpacing: "0"
+  headline-small:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "2.6rem"
+    fontWeight: 900
+    lineHeight: 0.96
+    letterSpacing: "0"
   title:
     fontFamily: "var(--font-sans), sans-serif"
-    fontSize: "1.5rem"
+    fontSize: "1rem"
     fontWeight: 900
-    lineHeight: 1.12
-    letterSpacing: "-0.015em"
+    lineHeight: 1.1
+    letterSpacing: "0"
+  title-compact:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "0.95rem"
+    fontWeight: 900
+    lineHeight: 1.1
+    letterSpacing: "0"
   body:
     fontFamily: "var(--font-sans), sans-serif"
-    fontSize: "1.0625rem"
-    fontWeight: 650
-    lineHeight: 1.6
-    letterSpacing: "normal"
+    fontSize: "1.1rem"
+    fontWeight: 800
+    lineHeight: 1.7
+    letterSpacing: "0"
+  body-compact:
+    fontFamily: "var(--font-sans), sans-serif"
+    fontSize: "0.9rem"
+    fontWeight: 800
+    lineHeight: 1.45
+    letterSpacing: "0"
+  command:
+    fontFamily: "var(--font-mono), monospace"
+    fontSize: "0.85rem"
+    fontWeight: 900
+    lineHeight: 1.4
+    letterSpacing: "0"
   label:
     fontFamily: "var(--font-mono), monospace"
     fontSize: "0.75rem"
-    fontWeight: 800
+    fontWeight: 900
+    lineHeight: 1.3
+    letterSpacing: "0"
+  micro:
+    fontFamily: "var(--font-mono), monospace"
+    fontSize: "0.68rem"
+    fontWeight: 900
     lineHeight: 1.3
     letterSpacing: "0"
 rounded:
-  md: "0.75rem"
-  lg: "1rem"
-  panel: "1.35rem"
-  image: "1.75rem"
-  pill: "9999px"
+  dot: "0.28rem"
+  light: "0.35rem"
+  label: "0.75rem"
+  icon: "0.8rem"
+  stamp-icon: "0.85rem"
+  chip: "0.9rem"
+  control: "0.95rem"
+  stamp: "1rem"
+  tile: "1.05rem"
+  card: "1.35rem"
+  organic: "1.55rem"
+  stage: "2.2rem"
 spacing:
   page-x: "1rem"
   page-x-lg: "2rem"
   section-y: "5rem"
-  hero-bottom: "3rem"
   grid-gap: "0.75rem"
-  panel-padding: "1.25rem"
 components:
-  button-primary:
-    backgroundColor: "{colors.shop-amber}"
-    textColor: "{colors.shop-ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.md}"
-    height: "2.5rem"
-  shop-panel:
-    backgroundColor: "{colors.shop-paper}"
-    textColor: "{colors.shop-ink}"
-    rounded: "{rounded.panel}"
+  stage-plate:
+    backgroundColor: "{colors.terrarium-paper}"
+    textColor: "{colors.terrarium-ink}"
+    rounded: "{rounded.stage}"
+    border: "1px solid rgba(38, 50, 56, 0.2)"
+  physical-card:
+    backgroundColor: "{colors.terrarium-paper}"
+    textColor: "{colors.terrarium-ink}"
+    rounded: "{rounded.card}"
+    border: "1px solid rgba(38, 50, 56, 0.2)"
   command:
-    backgroundColor: "#182116"
-    textColor: "#fff4d6"
-    typography: "{typography.label}"
-    rounded: "{rounded.lg}"
+    backgroundColor: "{colors.terrarium-ink}"
+    textColor: "{colors.terrarium-cream}"
+    typography: "{typography.command}"
+    rounded: "{rounded.control}"
+  file-chip:
+    backgroundColor: "{colors.terrarium-mint}"
+    textColor: "{colors.terrarium-ink}"
+    rounded: "{rounded.tile}"
+    border: "1px solid rgba(38, 50, 56, 0.18)"
 ---
 
 # Design System: AI-first
 
 ## Overview
 
-**Creative North Star: "Cozy Wooden Repository Shop"**
+**Creative North Star: "Repository Memory Terrarium"**
 
-AI-first should feel like entering a small wooden shop where a repository can be
-prepared for the next agent visit. The product promise is deliberately simple:
-one command is enough. For existing repositories, the owner can ask their agent
-to stock the `.ai-first` shelves with a ready prompt.
+AI-first should feel like a polished pastel 3D clay-paper workspace. The site is
+not a conventional landing page with a 3D object inserted into one panel. It is
+a sequence of connected dioramas where real HTML controls, commands, labels,
+and file chips sit inside or on top of Blender-authored repository memory
+scenes.
 
-The page should be visual first and text second. Generated imagery carries the
-world: walnut shelves, brass labels, cream paper bundles, drawers, warm lamps,
-and a small agent lantern. Text appears as short shop signs, prompt cards, and
-drawer labels rather than long SaaS paragraphs.
+The first viewport proves the mechanism immediately: the copyable install
+command sits in a physical command dock, amber pulses stock a local memory
+shelf, and the memory files appear as HTML labels attached to the 3D scene.
 
 ## Key Characteristics
 
-- Full-bleed first viewport with a cozy wooden shop hero image and very little
-  copy.
-- A single unframed 3D agent-lantern character can live in the hero as a
-  working mascot: warm, tactile, and useful, never a separate toy panel.
-- Warm tactile materials: walnut wood, cream paper, brass, forest green cloth,
-  amber lamp light.
-- A strong prompt section for existing repositories, with an HTML prompt card
-  and copy action.
-- Later explanation remains visual: drawers, shelves, paper bundles, and short
-  signs.
-- Light and dark themes both preserve the shop mood; dark mode is a late-evening
-  shop, not a console.
+- No header shell. The first viewport starts directly with the product stamp,
+  thesis, command dock, and hero terrarium.
+- Pastel clay-paper material language: sage canvas, peach slabs, mint and sky
+  panels, amber signals, soft shadows, and rounded-square physical controls.
+- 3D owns the page structure: hero memory shelf, existing-repo handoff trays,
+  and archive file garden.
+- HTML remains real and copyable. Commands, prompts, file labels, and task
+  explanations are not baked into Blender textures.
+- Foliage and organic shapes frame depth like the references, but they explain
+  "memory grows around the repo" rather than becoming decoration.
+- Motion has one authored behavior family: reveal blur resolves into place,
+  amber beads pulse, and 3D objects gently breathe with pointer parallax.
 
 ## Color Rules
 
-Use wood and amber as atmosphere, not clutter. The page may be visually rich
-through images, while UI surfaces stay controlled and readable.
+Large page surfaces use muted sage and warm cream. Main 3D slabs use peach and
+paper. Mint and sky are the primary UI materials. Coral is a rare file/accent
+color. Amber is reserved for copy actions, command pulses, and continuity
+signals.
 
-- **Shop Background** (`#f0d8ad`): warm paper base after the hero.
-- **Shop Band** (`#e3c18b`): alternating section shelf light.
-- **Shop Nav** (`#25150a`): dark wooden header.
-- **Shop Paper** (`#f4dfba`): cards, prompt surfaces, and readable panels.
-- **Shop Wood** (`#5a3218`): section headers and shop-counter blocks.
-- **Shop Ink** (`#261709`): primary text on light surfaces.
-- **Shop Muted** (`#715232`): secondary copy.
-- **Shop Amber** (`#d9942e`): primary actions and small warmth.
+Do not reintroduce purple/lilac, realistic wood, abstract AI gradients, or a
+dark SaaS palette. The page should read as expensive toy/clay/paper craft, not
+as a beige card layout.
 
 ## Layout
 
 The homepage path:
 
-1. **Empty beautiful hero.** Full-bleed wooden shop image, one headline, one
-   command block. No product paragraph is required in the first viewport.
-2. **Existing repo prompt.** A generated prompt-counter image and a real prompt
-   card the visitor can copy.
-3. **Inside the shop.** Short file drawers show what `.ai-first` contains, with
-   a shelf image as the main visual anchor.
-4. **Full tour.** Three short steps and a final inventory panel for people who
-   want the mechanism.
+1. **Command Dock and Memory Shelf.** Left side has product stamp, direct
+   headline, copyable install command, and pulses. Right side is the large 3D
+   hero terrarium with HTML labels pinned onto it.
+2. **Handoff Trays.** Existing-repository bootstrap prompt stays copyable and
+   appears as a physical note beside a second 3D tray scene.
+3. **Archive File Garden.** A third 3D scene shows file storage while the HTML
+   file chips and three-step explanation sit beside it.
+4. **Continuity Close.** A quiet physical card closes the story without adding
+   unrelated process claims.
 
-Avoid standard hero/card grids as the main idea. Repeated panels are allowed
-only as drawer labels or shop inventory, not as generic feature cards.
+Avoid generic SaaS grids and repeated equal cards as the page skeleton. Cards
+are allowed for actual command docks, prompt notes, file chips, and step nodes.
 
-## Imagery
+## Imagery And 3D
 
-Shipping raster assets:
+The homepage uses a canonical Blender source and three exported web scenes:
 
-- `/illustrations/wooden-shop-hero.png`
-- `/illustrations/wooden-shop-prompt.png`
-- `/illustrations/wooden-shop-shelves.png`
+- Blender source: `site/assets/blender/memory-terrarium.blend`
+- Hero model: `site/public/models/hero-memory-terrarium.glb`
+- Handoff model: `site/public/models/handoff-trays.glb`
+- Archive model: `site/public/models/archive-file-garden.glb`
+- Runtime staging: `site/components/terrarium-scene-3d.tsx`
 
-Images must avoid readable text, external logos, copied characters, desktop
-metaphors, browser chrome, and terminal screenshots. New assets should continue
-the cozy wooden shop material language.
-
-The homepage also ships one code-authored Three.js character in
-`components/agent-lantern-3d.tsx`: a floating lantern-keeper made from brass,
-wood, cream paper, and warm glass geometry. It belongs directly over the hero
-scene, not inside a frame or card, and should remain secondary to the command.
+The older `agent-lantern` mascot and one-off `memory-shelf` model are not the
+homepage direction. Future 3D work should extend the terrarium scene system,
+not create a character mascot or a standalone decorative object.
 
 ## Typography
 
-Raleway remains the friendly display and body face. It should be oversized and
-confident in the hero, then sparse and sign-like in later sections. Geist Mono is
-reserved for commands, file names, and the bootstrap prompt.
+Raleway remains the display and body face. It should be bold, friendly, and
+chunky enough to match the clay UI. Geist Mono is reserved for commands, file
+names, labels, and the bootstrap prompt. Letter spacing stays `0`.
 
 ## Components
 
-### Shop Panel
+### Stage Plate
 
-Warm paper panel with a subtle border and soft shadow. It behaves like a card or
-shop sign, but panels should be few and purposeful.
+Large rounded 3D viewport surface with soft depth, organic mint/peach edge
+shapes, a transparent WebGL canvas, and HTML labels layered above the scene.
 
-### Command / Prompt Card
+### Physical Card
 
-High-contrast command surfaces use mono text and allow horizontal or vertical
-scrolling where needed. The prompt card is a real utility, not decoration.
+Command docks, prompt trays, and the closing panel use one light paper surface,
+soft shadow, and rounded-square corners. They should feel like objects on the
+desk, not generic cards.
 
-### Drawer
+### Command Dock
 
-Small file surfaces for `PROJECT.md`, `IN_PROGRESS.md`, `BACKLOG.md`,
-`IDEAS.md`, `ARCHITECTURE.md`, and `CHANGELOG.md`. They use icons as brass-like
-labels and keep copy short.
+The install command is a dark inset code block on a physical card with a mint or
+sky rail and amber status light. Copy controls use amber.
 
-### 3D Agent Lantern
+### File Chip
 
-The character is the shop's keeper: a small glowing lantern with a paper cloak
-and repository file bundle. It may float, breathe, and follow pointer movement
-slightly. It should not block copy actions, hide the headline, or introduce a
-new color family outside wood, brass, cream paper, forest green, and amber.
+Real memory files appear as mint, sky, or peach chips with a small icon block,
+label, and exact file name. They may lift slightly on hover.
 
-## Do's and Don'ts
+### Terrarium Scene
+
+`TerrariumScene3D` loads one of the exported GLB scenes, centers it, lights it,
+and applies gentle pointer-responsive motion. It must respect reduced motion and
+dispose Three.js resources on unmount.
+
+## Do's And Don'ts
 
 ### Do
 
-- **Do** lead with atmosphere and one clear action.
-- **Do** make the existing-repo prompt easy to find and copy.
-- **Do** use generated raster images as major layout elements.
-- **Do** keep explanatory text short.
-- **Do** preserve light and dark theme support.
+- **Do** make the site feel built around 3D from the first viewport.
+- **Do** keep commands and prompts copyable as real HTML.
+- **Do** keep the palette restrained: sage, cream, peach, mint, sky, amber, rare
+  coral, dark ink.
+- **Do** use 3D scenes to explain install, handoff, and local file continuity.
+- **Do** preserve mobile: first viewport must show at least a hint of the 3D
+  terrarium after the command.
 
 ### Don't
 
-- **Don't** return to a website-as-desktop layout.
-- **Don't** make the page a normal SaaS card grid.
-- **Don't** over-explain before the visitor sees the shop.
-- **Don't** use bright meadow colors, abstract AI gradients, or console chrome.
-- **Don't** add duplicate commands or aliases to hide copy mistakes.
+- **Don't** add a header/nav shell back to the homepage.
+- **Don't** use realistic wooden-shop imagery as the homepage anchor.
+- **Don't** make a mascot the explanation.
+- **Don't** treat 3D as a single object inserted into a flat page.
+- **Don't** bake functional copy into model textures.
