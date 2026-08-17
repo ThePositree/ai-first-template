@@ -34,7 +34,7 @@ export default function RootLayout({
       <body>
         <div
           hidden
-          data-impeccable-contract="THESIS: AI-first is a flight recorder for AI agents, not another generic AI SaaS hero. OWN-WORLD: dark recorder console, cyan instrument light, amber owner signal, file strips as telemetry. STORY: install once, agent reads the record, fresh chats recover context. FIRST VIEWPORT: oversized recorder headline left, command and constraints below, active recovery unit right. FORM: Repository Flight Recorder, seed f69040c2. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md"
+          data-impeccable-contract="THESIS: AI-first is a one-command warm start for agents inheriting a repository, not a generic SaaS explanation page. OWN-WORLD: cozy wooden shop, walnut shelves, cream paper bundles, brass labels, amber lantern light, tactile cartoon realism, and one live Three.js lantern-keeper character. STORY: one command opens the shop; existing repositories can ask their agent to stock AI-first files with a ready prompt; deeper sections show the shelves inside. FIRST VIEWPORT: full-bleed wooden-shop hero image with the line 'One command is enough' and the install command at bottom left, balanced by an unframed floating 3D agent lantern on the right. FORM: Cozy Wooden Repository Shop, user-pinned playful product-world craft, seed e2ed67b9. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance"
         />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

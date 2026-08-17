@@ -15,10 +15,12 @@ for them.
 
 ## Product Purpose
 
-AI-first installs a small local memory layer into a repository so AI agents can
-recover project context across fresh chats. Success means the owner repeats less,
-the agent understands the product faster, and ongoing work stays grounded in
-local project memory.
+AI-first installs a small local memory and task layer into a repository so AI
+agents can recover project context across fresh chats and help maintain active
+work, backlog, ideas, decisions, and changelog history. Success means the owner
+repeats less, the agent understands the product faster, task state stays visible
+inside the project, and ongoing work keeps the practical benefits of a task
+tracker without forcing the owner into separate project-management machinery.
 
 ## Positioning
 
@@ -38,8 +40,11 @@ decisions, architecture, and recent history.
 
 - Installed repositories receive inspectable local files.
 - Installed repositories do not receive persistent local maintenance scripts.
-- Installed repositories should not require a global CLI, `npx`, persistent
-  binary, or `node_modules`.
+- Installation may eventually be available through `curl | sh`, `npx`, `uvx`,
+  `pnpm dlx`, `bunx`, or similar runner-style entrypoints.
+- After installation, target repositories should not depend on a persistent
+  global CLI, repeated `npx`-style runner usage, a persistent binary, or
+  `node_modules` inside `.ai-first`.
 - After installation, management is expected to happen through the owner's AI
   agent.
 - The current public install command is still a draft.

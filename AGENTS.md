@@ -174,6 +174,18 @@ items only after owner approval and must include a priority.
 
 Prefer established project patterns over new abstractions.
 
+### UI Work
+
+All UI-related work in this repository goes through Impeccable. Treat any task
+that designs, redesigns, edits, critiques, audits, polishes, adapts, animates,
+colorizes, typesets, lays out, hardens, clarifies, optimizes, or otherwise
+changes frontend interface behavior or presentation as an implicit Impeccable
+task.
+
+For UI work, scan the available Impeccable capabilities first, load the
+appropriate Impeccable command/reference, and apply the relevant workflow
+without waiting for the owner to say "use Impeccable" each time.
+
 For non-trivial libraries, frameworks, SDKs, cloud services, or APIs, check
 current official documentation before writing code against them.
 

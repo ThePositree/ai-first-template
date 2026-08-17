@@ -7,6 +7,25 @@ the newest 25 dated entries or becomes too heavy for fresh-chat recovery, move
 the oldest complete dated sections into `CHANGELOG_ARCHIVE.md`. Preserve
 newest-first order in both files.
 
+## 2026-08-16
+
+- Added a live Three.js agent-lantern character to the documentation homepage
+  hero and recorded it in the site design memory and surface brief.
+- Reworked the documentation site into the Cozy Wooden Repository Shop
+  direction: a generated full-bleed hero image, one-command first viewport,
+  existing-repository bootstrap prompt, drawer/shelf explanation sections, and
+  light/dark visual QA.
+- Locked repository text files and Oxfmt output to LF line endings and added
+  project-local Playwright scripts
+  for WSL dependency checks, browser install, and desktop/mobile site
+  screenshots.
+- Replaced the documentation site's durable design-system direction with a
+  cartoon repository garden world for future UI work.
+- Added an agent workflow rule that all UI-related work in this repository
+  should automatically route through Impeccable, including capability scanning
+  and the relevant command/reference, without requiring the owner to remind the
+  agent each time.
+
 ## 2026-08-13
 
 - Completed every approved backlog item by adding changelog archive rotation,
