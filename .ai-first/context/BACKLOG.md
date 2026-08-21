@@ -13,11 +13,7 @@ Use priority headings for approved backlog items:
 ```markdown
 ## P1 - Short Task Name
 
-**What:** concrete unfinished work.
-**Why now:** why this belongs in backlog now.
-**Expected gain:** what improves when it is done.
-**Acceptance:** how the owner and agent know it is complete.
-**Links:** related files, issues, chats, ideas, or ADRs.
+**What:** concrete unfinished work. **Why now:** why this belongs in backlog now. **Expected gain:** what improves when it is done. **Acceptance:** how the owner and agent know it is complete. **Links:** related files, issues, chats, ideas, or ADRs.
 ```
 
 No backlog items recorded yet.

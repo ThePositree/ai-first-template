@@ -1,39 +1,39 @@
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
+
 import { fileExists } from "./project.js";
 
-export type PlannedFile = {
+export interface PlannedFile {
   source?: string;
   target: string;
   relativePath: string;
   content?: string;
   mode?: "normal" | "agentHandoff" | "generated";
-};
+}
 
 export type PlanAction = "create" | "skip" | "update" | "inject" | "conflict";
 
-export type PlanEntry = PlannedFile & {
+export interface PlanEntry extends PlannedFile {
   action: PlanAction;
   nextContent?: string;
-};
+}
 
-export async function readPlannedContent(file: PlannedFile): Promise<string> {
+export const readPlannedContent = (file: PlannedFile): Promise<string> => {
   if (file.content !== undefined) {
-    return file.content;
+    return Promise.resolve(file.content);
   }
 
   if (!file.source) {
     throw new Error(`Missing source for ${file.relativePath}`);
   }
 
-  return readFile(file.source, "utf8");
-}
+  return readFile(file.source, "utf-8");
+};
 
-function hasAiFirstHandoff(content: string): boolean {
-  return content.includes(".ai-first/README.md");
-}
+const hasAiFirstHandoff = (content: string): boolean =>
+  content.includes(".ai-first/README.md");
 
-function injectAiFirstHandoff(current: string, incoming: string): string {
+const injectAiFirstHandoff = (current: string, incoming: string): string => {
   const trimmedCurrent = current.trimEnd();
   const trimmedIncoming = incoming.trim();
 
@@ -42,65 +42,59 @@ function injectAiFirstHandoff(current: string, incoming: string): string {
   }
 
   return `${trimmedCurrent}\n\n---\n\n${trimmedIncoming}\n`;
-}
+};
 
-export async function createPlan(files: PlannedFile[]): Promise<PlanEntry[]> {
-  const plan: PlanEntry[] = [];
-
-  for (const file of files) {
-    if (!(await fileExists(file.target))) {
-      plan.push({ ...file, action: "create" });
-      continue;
-    }
-
-    const currentStats = await stat(file.target);
-    if (!currentStats.isFile()) {
-      plan.push({ ...file, action: "conflict" });
-      continue;
-    }
-
-    const [current, incoming] = await Promise.all([
-      readFile(file.target, "utf8"),
-      readPlannedContent(file),
-    ]);
-
-    if (current === incoming) {
-      plan.push({ ...file, action: "skip" });
-      continue;
-    }
-
-    if (file.mode === "agentHandoff") {
-      if (hasAiFirstHandoff(current)) {
-        plan.push({ ...file, action: "skip" });
-        continue;
-      }
-
-      plan.push({
-        ...file,
-        action: "inject",
-        nextContent: injectAiFirstHandoff(current, incoming),
-      });
-      continue;
-    }
-
-    if (file.mode === "generated") {
-      plan.push({ ...file, action: "update", nextContent: incoming });
-      continue;
-    }
-
-    plan.push({ ...file, action: "conflict" });
+const createPlanEntry = async (file: PlannedFile): Promise<PlanEntry> => {
+  if (!(await fileExists(file.target))) {
+    return { ...file, action: "create" };
   }
 
-  return plan;
-}
+  const currentStats = await stat(file.target);
+  if (!currentStats.isFile()) {
+    return { ...file, action: "conflict" };
+  }
 
-export async function applyPlan(plan: PlanEntry[]): Promise<void> {
-  for (const entry of plan) {
-    if (!["create", "update", "inject"].includes(entry.action)) {
-      continue;
+  const [current, incoming] = await Promise.all([
+    readFile(file.target, "utf-8"),
+    readPlannedContent(file),
+  ]);
+
+  if (current === incoming) {
+    return { ...file, action: "skip" };
+  }
+
+  if (file.mode === "agentHandoff") {
+    if (hasAiFirstHandoff(current)) {
+      return { ...file, action: "skip" };
     }
 
-    await mkdir(path.dirname(entry.target), { recursive: true });
-    await writeFile(entry.target, entry.nextContent ?? (await readPlannedContent(entry)));
+    return {
+      ...file,
+      action: "inject",
+      nextContent: injectAiFirstHandoff(current, incoming),
+    };
   }
-}
+
+  if (file.mode === "generated") {
+    return { ...file, action: "update", nextContent: incoming };
+  }
+
+  return { ...file, action: "conflict" };
+};
+
+export const createPlan = (files: PlannedFile[]): Promise<PlanEntry[]> =>
+  Promise.all(files.map(createPlanEntry));
+
+const applyPlanEntry = async (entry: PlanEntry): Promise<void> => {
+  if (!["create", "update", "inject"].includes(entry.action)) {
+    return;
+  }
+
+  await mkdir(path.dirname(entry.target), { recursive: true });
+  const content = entry.nextContent ?? (await readPlannedContent(entry));
+  await writeFile(entry.target, content);
+};
+
+export const applyPlan = async (plan: PlanEntry[]): Promise<void> => {
+  await Promise.all(plan.map(applyPlanEntry));
+};

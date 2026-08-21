@@ -2,8 +2,7 @@
 
 Approved unfinished work only.
 
-Use this file for concrete unfinished work the owner has approved but does not
-want to do immediately.
+Use this file for concrete unfinished work the owner has approved but does not want to do immediately.
 
 Priority labels:
 
@@ -16,11 +15,7 @@ Use priority headings for approved backlog items:
 ```markdown
 ## P1 - Short Task Name
 
-**What:** concrete unfinished work.
-**Why now:** why this belongs in backlog now.
-**Expected gain:** what improves when it is done.
-**Acceptance:** how the owner and agent know it is complete.
-**Links:** related files, issues, chats, ideas, or ADRs.
+**What:** concrete unfinished work. **Why now:** why this belongs in backlog now. **Expected gain:** what improves when it is done. **Acceptance:** how the owner and agent know it is complete. **Links:** related files, issues, chats, ideas, or ADRs.
 ```
 
 During onboarding:
@@ -32,8 +27,7 @@ During onboarding:
 After onboarding:
 
 - keep backlog limited to unfinished approved work;
-- preserve priority labels when moving work between backlog, active work,
-  changelog, future exports, or incident corrective actions;
+- preserve priority labels when moving work between backlog, active work, changelog, future exports, or incident corrective actions;
 - remove or update stale items when direction changes;
 - summarize backlog changes to the owner in the same chat turn.
 

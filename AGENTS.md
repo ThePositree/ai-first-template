@@ -1,8 +1,6 @@
 # AGENTS.md - ai-first operating manual
 
-This repository builds `ai-first`, a small local memory and maintenance
-workspace for AI-assisted repositories. The installable project envelope lives
-in `envelope/files`; do not overwrite it when changing the source repository.
+This repository builds `ai-first`, a small local memory and maintenance workspace for AI-assisted repositories. The installable project envelope lives in `envelope/files`; do not overwrite it when changing the source repository.
 
 ---
 
@@ -23,8 +21,7 @@ At the start of every session, read in this order:
 11. `.ai-first/context/CHANGELOG.md` - recent history.
 12. Relevant ADRs in `.ai-first/context/decisions/`.
 
-If the documents disagree with runtime config, source code, or owner messages,
-stop and ask the owner before making assumptions that affect product behavior.
+If the documents disagree with runtime config, source code, or owner messages, stop and ask the owner before making assumptions that affect product behavior.
 
 ---
 
@@ -34,20 +31,16 @@ stop and ask the owner before making assumptions that affect product behavior.
 
 The owner controls:
 
-- final product direction, priorities, scope changes, and approval of proposed
-  trade-offs;
+- final product direction, priorities, scope changes, and approval of proposed trade-offs;
 - whether ideas become approved work;
-- decisions that create long-term product, architecture, or process
-  commitments;
+- decisions that create long-term product, architecture, or process commitments;
 - whether corrective actions from incidents become backlog items.
 
-Agents may challenge unclear or risky direction once with concrete reasoning,
-then continue from the owner's decision.
+Agents may challenge unclear or risky direction once with concrete reasoning, then continue from the owner's decision.
 
 Agents may maintain:
 
-- `.ai-first/context` files that describe current behavior, active work, backlog,
-  ideas, decisions, architecture, and changelog history;
+- `.ai-first/context` files that describe current behavior, active work, backlog, ideas, decisions, architecture, and changelog history;
 - changelog entries and archive rotation;
 - task-state moves that follow explicit owner direction;
 - post-mortem records and proposed corrective actions after incidents.
@@ -61,12 +54,9 @@ Agents must ask before:
 
 ### Installable Envelope Safety
 
-`envelope/files` is the preserved first-run envelope installed into other
-repositories. Before modifying it, decide whether the change is part of the
-installable envelope or only part of the `ai-first` source project.
+`envelope/files` is the preserved first-run envelope installed into other repositories. Before modifying it, decide whether the change is part of the installable envelope or only part of the `ai-first` source project.
 
-Root-level files describe this repository. Envelope files describe newly
-installed user repositories.
+Root-level files describe this repository. Envelope files describe newly installed user repositories.
 
 ### Project Memory
 
@@ -75,18 +65,11 @@ Keep `.ai-first/context` close to behavior:
 - update product memory when product behavior changes;
 - update architecture memory when module boundaries or data flow changes;
 - write or update a spec before or alongside any non-trivial new component;
-- write an ADR when a decision commits the project to a trade-off that future
-  agents could reasonably question or reverse.
+- write an ADR when a decision commits the project to a trade-off that future agents could reasonably question or reverse.
 
-ADRs are append-only: supersede old decisions instead of silently rewriting
-history.
+ADRs are append-only: supersede old decisions instead of silently rewriting history.
 
-Use `.ai-first/context/CHANGELOG.md` as the hot-read recent history. Keep it
-newest first. When the changelog grows past roughly the most recent 25 dated
-entries or becomes heavy for fresh-chat recovery, move the oldest complete dated
-sections into `.ai-first/context/CHANGELOG_ARCHIVE.md`. Preserve newest-first
-order in both files. Read the archive only when older context, historical
-decisions, or links from current memory require it.
+Use `.ai-first/context/CHANGELOG.md` as the hot-read recent history. Keep it newest first. When the changelog grows past roughly the most recent 25 dated entries or becomes heavy for fresh-chat recovery, move the oldest complete dated sections into `.ai-first/context/CHANGELOG_ARCHIVE.md`. Preserve newest-first order in both files. Read the archive only when older context, historical decisions, or links from current memory require it.
 
 When behavior changes, check whether the same change must be reflected in:
 
@@ -103,8 +86,7 @@ When behavior changes, check whether the same change must be reflected in:
 
 `.ai-first/context/BACKLOG.md` must contain only approved unfinished work.
 
-`.ai-first/context/IDEAS.md` contains reminders, not tasks. Do not implement,
-spec, or move an idea into backlog without explicit owner approval.
+`.ai-first/context/IDEAS.md` contains reminders, not tasks. Do not implement, spec, or move an idea into backlog without explicit owner approval.
 
 Backlog priorities:
 
@@ -112,25 +94,13 @@ Backlog priorities:
 - **P1** - important product or agent-workflow improvement.
 - **P2** - useful follow-up after higher-priority work.
 
-Preserve priorities when moving work between active work, backlog, changelog
-entries, future exports, or corrective-action follow-ups. New backlog entries
-should use headings like `## P1 - Short Task Name`.
+Preserve priorities when moving work between active work, backlog, changelog entries, future exports, or corrective-action follow-ups. New backlog entries should use headings like `## P1 - Short Task Name`.
 
-Idea lifecycle metadata is lightweight and owner-visible. Use one of these
-statuses when it helps preserve context without turning ideas into backlog:
-`draft`, `approved`, `moved to backlog`, `implemented`, or `rejected`. Moving an
-idea to any status beyond `draft` requires clear owner direction. Rejected or
-implemented ideas may stay in `IDEAS.md` when the history is useful; otherwise
-summarize them in `CHANGELOG.md` and remove the stale reminder.
+Idea lifecycle metadata is lightweight and owner-visible. Use one of these statuses when it helps preserve context without turning ideas into backlog: `draft`, `approved`, `moved to backlog`, `implemented`, or `rejected`. Moving an idea to any status beyond `draft` requires clear owner direction. Rejected or implemented ideas may stay in `IDEAS.md` when the history is useful; otherwise summarize them in `CHANGELOG.md` and remove the stale reminder.
 
-When a saved idea becomes relevant to current work, briefly remind the owner,
-explain why it fits or why it should wait, and ask before moving it into backlog,
-a spec, or code.
+When a saved idea becomes relevant to current work, briefly remind the owner, explain why it fits or why it should wait, and ask before moving it into backlog, a spec, or code.
 
-The owner communicates direction in chat; agents convert approved direction into
-active work, backlog, ideas, changelog entries, and ADRs as appropriate. Keep
-task state structured enough that it can later be exported to Jira, Linear,
-Confluence, or another tracker.
+The owner communicates direction in chat; agents convert approved direction into active work, backlog, ideas, changelog entries, and ADRs as appropriate. Keep task state structured enough that it can later be exported to Jira, Linear, Confluence, or another tracker.
 
 When adding active or backlog work, include:
 
@@ -140,23 +110,18 @@ When adding active or backlog work, include:
 - **Acceptance**
 - **Links**
 
-When changing `.ai-first/context/IN_PROGRESS.md`,
-`.ai-first/context/BACKLOG.md`, or `.ai-first/context/IDEAS.md`, treat the
-change as owner-visible project state, not as a silent internal edit. In the same
-chat turn, summarize the task delta:
+When changing `.ai-first/context/IN_PROGRESS.md`, `.ai-first/context/BACKLOG.md`, or `.ai-first/context/IDEAS.md`, treat the change as owner-visible project state, not as a silent internal edit. In the same chat turn, summarize the task delta:
 
 - active work added, completed, or replaced;
 - backlog items added, removed, or materially changed;
 - ideas added or moved;
 - any owner approval assumed.
 
-Completed or historical material belongs in `CHANGELOG.md`, archive docs, or
-closed ADRs, not in active task files.
+Completed or historical material belongs in `CHANGELOG.md`, archive docs, or closed ADRs, not in active task files.
 
 ### Incident Response
 
-For bug-fix, regression, data-loss, install-trust, or production-style failure
-sessions:
+For bug-fix, regression, data-loss, install-trust, or production-style failure sessions:
 
 1. Reproduce or capture the observed failure.
 2. Isolate the smallest credible cause.
@@ -164,11 +129,7 @@ sessions:
 4. Run the narrowest useful verification first, then broaden when risk warrants.
 5. Record follow-ups as proposed corrective actions.
 
-Create a post-mortem under `.ai-first/context/post_mortems/` when the incident
-caused user-visible impact, data loss, repeated failed work, install/update
-trust risk, or a decision that future agents should understand. Use
-`.ai-first/context/post_mortems/_template.md`. Corrective actions become backlog
-items only after owner approval and must include a priority.
+Create a post-mortem under `.ai-first/context/post_mortems/` when the incident caused user-visible impact, data loss, repeated failed work, install/update trust risk, or a decision that future agents should understand. Use `.ai-first/context/post_mortems/_template.md`. Corrective actions become backlog items only after owner approval and must include a priority.
 
 ### Implementation
 
@@ -176,32 +137,21 @@ Prefer established project patterns over new abstractions.
 
 ### UI Work
 
-All UI-related work in this repository goes through Impeccable. Treat any task
-that designs, redesigns, edits, critiques, audits, polishes, adapts, animates,
-colorizes, typesets, lays out, hardens, clarifies, optimizes, or otherwise
-changes frontend interface behavior or presentation as an implicit Impeccable
-task.
+For non-trivial libraries, frameworks, SDKs, cloud services, or APIs, check current official documentation before writing code against them.
 
-For UI work, scan the available Impeccable capabilities first, load the
-appropriate Impeccable command/reference, and apply the relevant workflow
-without waiting for the owner to say "use Impeccable" each time.
+When working on `site` UI, use shadcn/ui as the first source for reusable UI primitives. Use the shadcn skill and available shadcn MCP tools for project context, registry search, item inspection, examples, add commands, and docs before hand-building UI. Inspect `site/components.json`, local `site/components/ui`, and existing imports first. Search registries by functionality and UI pattern, not only by component name, for example `date range picker`, `command palette`, `pricing`, `authentication form`, `dashboard navigation`, or `file upload`. Prefer components in this order: existing project components, official shadcn components, approved third-party registries, composition of shadcn primitives, then custom components. If a promising registry item is found, inspect it with shadcn MCP `view`/examples or the shadcn CLI before using it; understand dependencies and composition, and inspect third-party source and dependencies before installing. Never guess a shadcn component API: check current docs/examples first. Use commands such as `pnpm -C site exec shadcn search @shadcn -q "<functionality>"`, `pnpm -C site exec shadcn docs <component>`, `pnpm -C site exec shadcn add <component> --dry-run`, and MCP tools such as `search_items_in_registries`, `view_items_in_registries`, `get_item_examples_from_registries`, and `get_add_command_for_items` when available. Tailwind is for layout and deliberate customization, not for recreating shadcn primitives from scratch. If the registry has no suitable primitive, record the functional search in the work summary and then build the smallest custom structure needed.
 
-For non-trivial libraries, frameworks, SDKs, cloud services, or APIs, check
-current official documentation before writing code against them.
+For linting, follow Ultracite/Oxlint rules by changing code to satisfy the rules. Do not disable rules, add ignore comments, or weaken lint configuration to make checks pass. It is acceptable to declare clear project boundaries in tool config, such as excluding external agent/tool state or a separately linted workspace like `site` from root lint/format commands. It is not acceptable to add ignores for owned source files just to hide violations. If a rule appears to require a harmful workaround or an owned-source exception, stop and ask the owner with a concrete explanation before adding any exception.
 
-Prefer maintained dependencies during source development when they materially
-reduce risk, but installed projects must not need `npm install`.
+Prefer maintained dependencies during source development when they materially reduce risk, but installed projects must not need `npm install`.
 
 ### Quality
 
-Add tests when behavior changes, a bug is fixed, or the change touches shared
-logic.
+Add tests when behavior changes, a bug is fixed, or the change touches shared logic.
 
-Run the smallest useful verification first. Broaden verification when the blast
-radius is larger.
+Run the smallest useful verification first. Broaden verification when the blast radius is larger.
 
-If verification cannot be run, say why in the final response and record any
-remaining risk.
+If verification cannot be run, say why in the final response and record any remaining risk.
 
 ### Git And Local Changes
 
@@ -209,8 +159,7 @@ The working tree may be dirty.
 
 Never revert changes you did not make unless the owner explicitly asks.
 
-If unrelated files are already modified, ignore them. If existing changes affect
-your task, work with them and ask only if they make the task impossible.
+If unrelated files are already modified, ignore them. If existing changes affect your task, work with them and ask only if they make the task impossible.
 
 Do not use destructive git commands unless explicitly requested.
 
@@ -224,9 +173,6 @@ Before handing back:
 2. Keep `.ai-first/context/BACKLOG.md` limited to unfinished work.
 3. Leave clear next steps in `.ai-first/context/IN_PROGRESS.md` if work remains.
 4. Append a dated `.ai-first/context/CHANGELOG.md` entry for meaningful changes.
-5. Rotate older changelog sections into
-   `.ai-first/context/CHANGELOG_ARCHIVE.md` when the hot-read changelog is too
-   large.
+5. Rotate older changelog sections into `.ai-first/context/CHANGELOG_ARCHIVE.md` when the hot-read changelog is too large.
 6. Update `README.md` or `site` only when the public surface changes.
-7. In final chat, state what changed, what remains, and the next useful command
-   or file to inspect.
+7. In final chat, state what changed, what remains, and the next useful command or file to inspect.

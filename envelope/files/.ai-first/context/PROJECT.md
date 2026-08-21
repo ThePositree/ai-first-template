@@ -1,7 +1,6 @@
 # Project
 
-This project has not been initialized yet. Ask the owner what they want to build,
-then fill this memory from their answer.
+This project has not been initialized yet. Ask the owner what they want to build, then fill this memory from their answer.
 
 Status: uninitialized.
 

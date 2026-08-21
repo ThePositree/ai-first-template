@@ -1,9 +1,9 @@
 export default {
   input: "src/installer/install.ts",
-  platform: "node",
   output: {
+    banner: "#!/usr/bin/env node",
     file: "dist/install.js",
     format: "esm",
-    banner: "#!/usr/bin/env node",
   },
+  platform: "node",
 };

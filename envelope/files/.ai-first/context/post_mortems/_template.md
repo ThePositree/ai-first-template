@@ -1,8 +1,6 @@
 # Post-Mortem: Title
 
-Status: draft
-Date: YYYY-MM-DD
-Owner: project owner
+Status: draft Date: YYYY-MM-DD Owner: project owner
 
 ## Summary
 
@@ -26,8 +24,7 @@ What changed to stop or mitigate the incident.
 
 ## Corrective Actions
 
-Corrective actions are proposed until the owner approves them as backlog work.
-When approved, mirror each item into `BACKLOG.md` with a priority.
+Corrective actions are proposed until the owner approves them as backlog work. When approved, mirror each item into `BACKLOG.md` with a priority.
 
 - [ ] Proposed action, owner approval pending.
 

@@ -9,6 +9,7 @@
     "check": "tsc --noEmit",
     "docs:build": "pnpm --filter @ai-first/site build",
     "docs:dev": "pnpm --filter @ai-first/site dev",
+    "docs:lint": "pnpm --filter @ai-first/site lint",
     "docs:start": "pnpm --filter @ai-first/site start",
     "docs:typecheck": "pnpm --filter @ai-first/site typecheck",
     "format": "oxfmt .",
@@ -19,10 +20,14 @@
   },
   "devDependencies": {
     "@types/node": "latest",
+    "eslint-plugin-github": "^6.1.2",
+    "eslint-plugin-sonarjs": "^4.2.0",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
+    "oxlint-plugin-react-doctor": "^0.9.12",
     "rolldown": "^1.2.3",
     "typescript": "latest",
+    "ultracite": "^7.10.5",
     "vitest": "^4.1.10"
   },
   "packageManager": "pnpm@11.21.0"

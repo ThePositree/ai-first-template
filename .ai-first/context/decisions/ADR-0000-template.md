@@ -1,8 +1,6 @@
 # ADR-0000: Decision Title
 
-Status: proposed
-Date: YYYY-MM-DD
-Owner: project owner
+Status: proposed Date: YYYY-MM-DD Owner: project owner
 
 ## Context
 
