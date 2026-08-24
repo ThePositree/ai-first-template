@@ -12,9 +12,11 @@ export interface PlannedFile {
 }
 
 export type PlanAction = "create" | "skip" | "update" | "inject" | "conflict";
+export type ConflictReason = "existing-non-file" | "existing-file-differs";
 
 export interface PlanEntry extends PlannedFile {
   action: PlanAction;
+  conflictReason?: ConflictReason;
   nextContent?: string;
 }
 
@@ -51,7 +53,11 @@ const createPlanEntry = async (file: PlannedFile): Promise<PlanEntry> => {
 
   const currentStats = await stat(file.target);
   if (!currentStats.isFile()) {
-    return { ...file, action: "conflict" };
+    return {
+      ...file,
+      action: "conflict",
+      conflictReason: "existing-non-file",
+    };
   }
 
   const [current, incoming] = await Promise.all([
@@ -79,7 +85,11 @@ const createPlanEntry = async (file: PlannedFile): Promise<PlanEntry> => {
     return { ...file, action: "update", nextContent: incoming };
   }
 
-  return { ...file, action: "conflict" };
+  return {
+    ...file,
+    action: "conflict",
+    conflictReason: "existing-file-differs",
+  };
 };
 
 export const createPlan = (files: PlannedFile[]): Promise<PlanEntry[]> =>
