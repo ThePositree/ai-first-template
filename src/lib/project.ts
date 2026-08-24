@@ -27,7 +27,11 @@ export const readManifest = async (): Promise<AiFirstManifest> => {
 };
 
 export const readVersion = async (): Promise<string> => {
-  const versionPath = repoPath(".ai-first", "VERSION");
-  const version = await readFile(versionPath, "utf-8");
-  return version.trim();
+  const packagePath = repoPath("package.json");
+  const raw = await readFile(packagePath, "utf-8");
+  const packageJson = JSON.parse(raw) as { version?: unknown };
+  if (typeof packageJson.version !== "string") {
+    throw new TypeError("package.json version must be a string");
+  }
+  return packageJson.version;
 };

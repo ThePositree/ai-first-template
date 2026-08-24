@@ -90,6 +90,7 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
+    expect(manifest.managedFiles).toContain(".ai-first/context/github-sync.md");
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
     );
@@ -100,6 +101,12 @@ describe("installer", () => {
         "utf-8"
       )
     ).resolves.toContain("Changelog Archive");
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "context", "github-sync.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("GitHub Sync");
     await expect(
       readFile(
         path.join(
