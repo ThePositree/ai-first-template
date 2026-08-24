@@ -1,9 +1,11 @@
-export default {
-  input: "src/installer/install.ts",
+const nodeBundle = (input, file) => ({
+  input,
   output: {
     banner: "#!/usr/bin/env node",
-    file: "dist/install.js",
+    file,
     format: "esm",
   },
   platform: "node",
-};
+});
+
+export default [nodeBundle("src/installer/install.ts", "dist/install.js")];

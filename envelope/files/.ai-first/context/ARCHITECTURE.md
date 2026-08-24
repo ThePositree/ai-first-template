@@ -16,7 +16,7 @@ TBD.
 
 ## External Services
 
-TBD.
+GitHub export starts with a fresh owner briefing recorded in `.ai-first/context/github-sync.md` unless the owner explicitly asks to reuse an existing recorded policy. AI-first provides instructions and policy memory, not a prepared exporter script. GitHub Issues and labels are the portable baseline for active/backlog work. Projects, Wiki, and Discussions are optional surfaces when the owner selects them and the repository supports them. Disabled or inaccessible selected surfaces require an owner question before fallback. GitHub remains a projection until the owner approves ongoing sync.
 
 ## Operational Notes
 

@@ -84,3 +84,25 @@ When behavior changes, check whether the same update belongs in:
 Keep `CHANGELOG.md` focused on recent hot-read history. When it grows past roughly the newest 25 dated entries or becomes too heavy for fresh-chat recovery, move the oldest complete dated sections into `CHANGELOG_ARCHIVE.md`.
 
 For incidents, capture the failure, isolate the smallest credible cause, apply the smallest evidence-based fix, verify it, and record durable history in `context/post_mortems/` when the incident had meaningful impact or follow-ups.
+
+## GitHub Export
+
+When the owner asks to move AI-first memory into GitHub, do it as an agent workflow. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script; use the GitHub CLI, MCP tools, API calls, temporary scripts, or manual steps that fit the repository.
+
+Run a fresh briefing first unless the owner explicitly says to reuse an existing recorded policy. Phrase the questions and answer options naturally for the owner, repository, language, and available GitHub surfaces. Cover surfaces, entity placement, scope, labels, Projects, Wiki, Discussions, relationships, existing data, sync mode, source of truth, conflicts, approvals, visibility, and dry-run preference. When presenting choices, include a way for the owner to give a custom answer.
+
+Record the approved policy in `.ai-first/context/github-sync.md`. This file records briefing history and policy; it is not permission to run future GitHub writes without asking.
+
+Use GitHub Issues and labels as the portable baseline export:
+
+- active work from `.ai-first/context/IN_PROGRESS.md` -> issues labeled `ai-first` and `ai-first:active`;
+- approved backlog from `.ai-first/context/BACKLOG.md` -> issues labeled `ai-first` and `ai-first:backlog`;
+- saved ideas from `.ai-first/context/IDEAS.md` -> issues labeled `ai-first` and `ai-first:idea`, with clear wording that ideas are not approved work;
+- priorities `P0`, `P1`, and `P2` -> labels `priority:P0`, `priority:P1`, and `priority:P2`;
+- long-form memory -> Wiki pages when Wiki is selected and enabled; otherwise ask before using an issue summary fallback.
+
+Projects, Wiki, and Discussions are optional when the owner selects them and the repository supports them. If a selected surface is disabled or inaccessible, ask whether the owner wants it enabled. If you cannot enable it yourself, explain the exact owner action needed and wait for the owner or choose a fallback only after approval.
+
+Before writing to GitHub, show the planned entities and get explicit apply confirmation. After creating or finding GitHub entities, update their bodies with useful GitHub-native relationship links between issues, discussions, wiki pages, projects, and source `.ai-first` paths. Do not write GitHub-only relationship links back into normal `.ai-first` memory files unless the owner explicitly approves GitHub as a source of truth.
+
+Until the owner approves ongoing sync, `.ai-first/context` remains the source of truth.

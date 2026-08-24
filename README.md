@@ -8,18 +8,19 @@ The first implementation is intentionally local and inspectable: installed proje
 
 Installed memory covers project context, active work, backlog, ideas, changelog/archive history, ADRs, and post-mortem templates.
 
+AI-first can also project that memory into GitHub when the owner asks an agent to do it. The agent briefs the owner, checks available GitHub surfaces, asks before using or enabling Projects/Wiki/Discussions, shows a plan, gets confirmation, and then creates the chosen GitHub entities with the tools available in that repository.
+
 ## Repository Shape
 
 - `envelope/files` - the preserved first-run envelope installed into other repositories.
-- `.ai-first/context` - project memory for agents.
 - `src/installer` - TypeScript source for the installer.
 - `src/lib/install-plan.ts` - shared installer planning and apply logic.
-- `scripts/install.sh` - draft public install entrypoint for local dogfooding.
+- `scripts/install.sh` - draft public install entrypoint for local development.
 - `site` - Next.js documentation website.
 - `rolldown.config.mjs` - Rolldown build config for the installer artifact.
 - `mise.toml` - pinned project tool versions.
 
-## Useful Commands
+## Source Development Commands
 
 ```bash
 pnpm install
@@ -28,3 +29,5 @@ pnpm test
 pnpm docs:build
 pnpm install:local -- tmp/demo-project
 ```
+
+Installed projects do not receive npm scripts for GitHub export. The owner asks their agent to move `.ai-first` memory into GitHub; the agent uses the installed instructions and whatever GitHub tooling is available in that repository.

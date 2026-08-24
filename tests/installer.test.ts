@@ -25,12 +25,13 @@ const makeTarget = async (name: string): Promise<string> => {
 };
 
 const runInstaller = async (
-  target: string
+  target: string,
+  args: string[] = []
 ): Promise<{ code: number; stdout: string; stderr: string }> => {
   try {
     const { stdout, stderr } = await execFileAsync(
       process.execPath,
-      [installScript, "--target", target],
+      [installScript, "--target", target, ...args],
       {
         cwd: repoRoot,
       }
@@ -90,6 +91,7 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
+    expect(manifest.managedFiles).toContain(".ai-first/context/github-sync.md");
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
     );
@@ -100,6 +102,12 @@ describe("installer", () => {
         "utf-8"
       )
     ).resolves.toContain("Changelog Archive");
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "context", "github-sync.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("GitHub Sync");
     await expect(
       readFile(
         path.join(
@@ -133,6 +141,53 @@ describe("installer", () => {
     expect(agents).toContain(".ai-first/README.md");
   });
 
+  test("skips an existing AGENTS.md that already has the AI-first handoff", async () => {
+    const target = await makeTarget("existing-handoff");
+    const agentsPath = path.join(target, "AGENTS.md");
+    const ownerInstructions =
+      "# Existing Agent Rules\n\nRead .ai-first/README.md first.";
+    await writeFile(agentsPath, `${ownerInstructions}\n`);
+
+    const result = await runInstaller(target);
+
+    expect(result.code).toBe(0);
+    expect(result.stdout).toContain("Inject: 0");
+
+    const agents = await readFile(agentsPath, "utf-8");
+    expect(agents).toBe(`${ownerInstructions}\n`);
+  });
+
+  test("plans an install without writing files in dry-run mode", async () => {
+    const parent = await makeTarget("dry-run");
+    const target = path.join(parent, "nested");
+
+    const result = await runInstaller(target, ["--dry-run"]);
+
+    expect(result.code).toBe(0);
+    expect(result.stdout).toContain("Mode: dry-run");
+    expect(result.stdout).toContain("Dry run complete");
+    expect(await readdir(parent)).toEqual([]);
+    await expect(
+      readFile(path.join(target, "AGENTS.md"), "utf-8")
+    ).rejects.toThrow();
+  });
+
+  test("prints a machine-readable JSON install report", async () => {
+    const target = await makeTarget("json");
+
+    const result = await runInstaller(target, ["--dry-run", "--json"]);
+
+    expect(result.code).toBe(0);
+    const report = JSON.parse(result.stdout);
+    expect(report).toMatchObject({
+      dryRun: true,
+      status: "planned",
+      target,
+    });
+    expect(report.actions.create).toBeGreaterThan(0);
+    expect(report.conflicts).toEqual([]);
+  });
+
   test("reports conflicts without writing files for unsafe existing paths", async () => {
     const target = await makeTarget("conflict");
     await mkdir(path.join(target, ".ai-first", "context", "PROJECT.md"), {
@@ -144,6 +199,12 @@ describe("installer", () => {
     expect(result.code).toBe(1);
     expect(result.stdout).toContain("Conflicts: 1");
     expect(result.stdout).toContain(".ai-first/context/PROJECT.md");
+    expect(result.stdout).toContain(
+      "Reason: An existing path is not a regular file."
+    );
+    expect(result.stdout).toContain(
+      "Action: Move the existing directory or special path, then rerun the installer."
+    );
     await expect(
       readFile(path.join(target, "AGENTS.md"), "utf-8")
     ).rejects.toThrow();
