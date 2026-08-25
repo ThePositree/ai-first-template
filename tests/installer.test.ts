@@ -91,8 +91,14 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
-    expect(manifest.managedFiles).toContain(".ai-first/context/github-sync.md");
+    expect(manifest.managedFiles).toContain(".ai-first/context/task-source.md");
     expect(manifest.managedFiles).toContain(".ai-first/playbooks/README.md");
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/local-to-tracker-migration.md"
+    );
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/tracker-to-local-migration.md"
+    );
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
     );
@@ -105,10 +111,32 @@ describe("installer", () => {
     ).resolves.toContain("Changelog Archive");
     await expect(
       readFile(
-        path.join(target, ".ai-first", "context", "github-sync.md"),
+        path.join(target, ".ai-first", "context", "task-source.md"),
         "utf-8"
       )
-    ).resolves.toContain("GitHub Sync");
+    ).resolves.toContain("Task Source");
+    await expect(
+      readFile(
+        path.join(
+          target,
+          ".ai-first",
+          "playbooks",
+          "local-to-tracker-migration.md"
+        ),
+        "utf-8"
+      )
+    ).resolves.toContain("Local To Tracker Migration");
+    await expect(
+      readFile(
+        path.join(
+          target,
+          ".ai-first",
+          "playbooks",
+          "tracker-to-local-migration.md"
+        ),
+        "utf-8"
+      )
+    ).resolves.toContain("Tracker To Local Migration");
     await expect(
       readFile(
         path.join(

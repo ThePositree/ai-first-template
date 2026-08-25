@@ -16,7 +16,7 @@ TBD.
 
 ## External Services
 
-Tracker migration starts with a fresh owner briefing unless the owner explicitly asks to reuse an existing recorded policy. For GitHub migrations, record the approved policy in `.ai-first/context/github-sync.md`. AI-first provides instructions and policy memory, not a prepared exporter script. GitHub Issues are the portable baseline for active/backlog work. Use the repository's normal labels or fields rather than AI-first-branded tracker metadata. Projects, Wiki, and Discussions are optional surfaces when the owner selects them and the repository supports them. Disabled or inaccessible selected surfaces require an owner question before fallback. `.ai-first/context` remains the active task source until the owner approves a different source of truth.
+Tracker migration starts with a fresh owner briefing unless the owner explicitly asks to reuse an existing recorded policy. Record the approved task-source policy in `.ai-first/context/task-source.md`. AI-first provides instructions and policy memory, not a prepared exporter script. Use the repository's normal tracker conventions rather than AI-first-branded tracker metadata. `.ai-first/context` remains the active task source until the owner approves a different source of truth.
 
 ## Operational Notes
 

@@ -15,6 +15,7 @@ Then load more context only when the current request needs it:
 - `.ai-first/context/VISION.md` for product direction or audience questions;
 - `.ai-first/context/REQUIREMENTS.md` for behavior, constraints, or acceptance criteria;
 - `.ai-first/context/ARCHITECTURE.md` for system shape, components, data flow, or operational questions;
+- `.ai-first/context/task-source.md` for the current task source of truth or tracker migration policy;
 - `.ai-first/context/BACKLOG.md` for approved future work;
 - `.ai-first/context/IDEAS.md` for unapproved possibilities;
 - relevant files in `.ai-first/context/decisions/` for durable trade-offs.
@@ -39,6 +40,11 @@ After the owner responds:
 ## Task State
 
 `.ai-first/context/IN_PROGRESS.md` contains only active work. `.ai-first/context/BACKLOG.md` contains approved unfinished work. `.ai-first/context/IDEAS.md` contains saved ideas, not approved tasks.
+
+AI-first uses one active task source at a time:
+
+- **Local task source:** task state lives in `.ai-first/context`.
+- **External tracker task source:** task state lives in GitHub Issues, Linear, Jira, Yandex Tracker, or another selected tracker. Local task files become pointers and stop acting as backlog or active-work records.
 
 When changing task state, summarize the task delta to the owner in the same chat turn.
 
@@ -93,22 +99,15 @@ For incidents, capture the failure, isolate the smallest credible cause, apply t
 
 ## Tracker Migration
 
-When the owner asks to move AI-first task state into GitHub or another tracker, do it as an agent workflow and a source-of-truth migration. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script; use the tracker tools, MCP tools, API calls, temporary scripts, or manual steps that fit the repository.
+When the owner asks to move task state between `.ai-first` and GitHub Issues, Linear, Jira, Yandex Tracker, or another tracker, do it as an agent workflow and a source-of-truth migration. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script.
 
-Run a fresh briefing first unless the owner explicitly says to reuse an existing recorded policy. Phrase the questions and answer options naturally for the owner, repository, language, and available tracker surfaces. Cover surfaces, entity placement, scope, labels, Projects, Wiki, Discussions, relationships, existing data, sync mode, source of truth, conflicts, approvals, visibility, and dry-run preference. When presenting choices, include a way for the owner to give a custom answer.
+Read `.ai-first/context/task-source.md`, then read only the matching playbook:
 
-For GitHub, record the approved policy in `.ai-first/context/github-sync.md`. This file records briefing history and policy; it is not permission to run future GitHub writes without asking.
+- `.ai-first/playbooks/local-to-tracker-migration.md` when moving local task state into a tracker;
+- `.ai-first/playbooks/tracker-to-local-migration.md` when moving tracker task state back into local AI-first Markdown.
 
-Use GitHub Issues as the portable baseline migration target:
+Run a fresh briefing first unless the owner explicitly says to reuse an existing approved policy. Before writing to any tracker or local task files, show the planned records and get explicit apply confirmation.
 
-- active work from `.ai-first/context/IN_PROGRESS.md` -> issues or tracker items marked as active using the repository's normal conventions;
-- approved backlog from `.ai-first/context/BACKLOG.md` -> issues or tracker items marked as backlog using the repository's normal conventions;
-- saved ideas from `.ai-first/context/IDEAS.md` -> idea records with clear wording that ideas are not approved work;
-- priorities `P0`, `P1`, and `P2` -> the repository's normal priority labels or fields;
-- long-form memory -> Wiki pages when Wiki is selected and enabled; otherwise ask before using an issue summary fallback.
-
-Projects, Wiki, and Discussions are optional when the owner selects them and the repository supports them. If a selected surface is disabled or inaccessible, ask whether the owner wants it enabled. If you cannot enable it yourself, explain the exact owner action needed and wait for the owner or choose a fallback only after approval.
-
-Before writing to GitHub or another tracker, show the planned entities and get explicit apply confirmation. After creating or finding GitHub entities, update their bodies with useful GitHub-native relationship links between issues, discussions, wiki pages, projects, and source `.ai-first` paths. Do not write tracker-only relationship links back into normal `.ai-first` memory files unless the owner explicitly approves that tracker as a source of truth.
+Use the repository's normal tracker conventions for labels, fields, statuses, priorities, queues, teams, projects, and relationships. Do not create AI-first-branded tracker fields, labels, tags, components, statuses, or visible boilerplate.
 
 Until the owner approves a different source of truth, `.ai-first/context` remains the active task source.
