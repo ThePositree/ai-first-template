@@ -2,9 +2,17 @@
 
 This repository builds `ai-first`.
 
-GitHub is the source of truth for project planning, product memory, ideas, decisions, and open questions in this repository. Use the repository Wiki, Discussions, Issues, and Project `ai-first` before making product or planning assumptions.
+GitHub is the source of truth for project planning, product memory, ideas, decisions, and open questions in this repository. Use the repository Wiki, Discussions, Issues, and Project `ai-first` during mandatory session startup and before making product or planning assumptions.
 
 The working tree may contain unrelated owner changes. Do not revert them unless the owner explicitly asks.
+
+## Mandatory Session Startup
+
+At the start of every new chat/session in this source repository, gather the relevant GitHub context before giving substantive guidance, even if the owner only greets you or has not stated a concrete task yet.
+
+This GitHub context gathering is mandatory startup work, not something to defer until immediately before a product, architecture, documentation, or planning task. Use the repository Wiki, Discussions, Issues, and Project `ai-first` to recover the current product memory, approved work, open questions, and relevant ideas. If the owner's intent is not clear yet, first read the current product model and planning indexes, then open the specific GitHub items that become relevant as the conversation sharpens.
+
+Do not mutate GitHub or other planning surfaces during startup. External changes still require the explicit approval flow below.
 
 ## Project Context
 
