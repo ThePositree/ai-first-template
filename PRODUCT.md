@@ -20,9 +20,12 @@ Examples:
 
 - root `README.md`;
 - root `AGENTS.md`;
+- root `PRODUCT.md`;
 - GitHub Wiki / product docs;
 - documentation site content;
 - issues, discussions, release notes, and other maintainer-facing docs.
+
+Source project Markdown does not mean a root `.ai-first` directory in this repository. This source repository is not dogfooding an installed `.ai-first` workspace; source project memory lives in maintainer-facing docs such as root `PRODUCT.md`, root `AGENTS.md`, README, the site, GitHub Wiki, Discussions, and Issues.
 
 When this project says "document AI-first", "explain the OSS project", "update public docs", or "describe the product", it usually means source project Markdown.
 

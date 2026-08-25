@@ -38,7 +38,7 @@ The product name is AI-first. The brand should feel trustworthy, local-first, tr
 - Current site implementation: `site/app/page.tsx`.
 - Current design tokens: `site/app/globals.css`.
 - Current shadcn configuration: `site/components.json`.
-- Current product model: root `PROJECT.md`.
+- Current product model: root `PRODUCT.md`.
 - No customer logos, testimonials, metrics, or public launch proof are available.
 
 ## Product Principles

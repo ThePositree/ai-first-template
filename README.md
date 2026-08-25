@@ -14,14 +14,14 @@ AI-first can also help move task state into GitHub Issues, Linear, Jira, Yandex 
 
 This source repository contains two kinds of Markdown:
 
-- Source project Markdown explains the `ai-first` OSS project itself: `README.md`, `PROJECT.md`, `AGENTS.md`, the documentation site, changelog, release notes, GitHub Issues, Discussions, and Wiki.
+- Source project Markdown explains the `ai-first` OSS project itself: `README.md`, `PRODUCT.md`, `AGENTS.md`, the documentation site, changelog, release notes, GitHub Issues, Discussions, and Wiki.
 - Installable envelope Markdown lives under `envelope/files` and is copied into user repositories.
 
 Keep those layers separate. Public source docs explain the product and source development workflow; envelope docs explain what installed agents read inside a target repository.
 
 ## Repository Shape
 
-- `PROJECT.md` - the current product model for source documentation.
+- `PRODUCT.md` - the current product model for source documentation.
 - `envelope/files` - the installable Markdown envelope copied into other repositories.
 - `src/installer` - TypeScript source for the installer.
 - `src/lib/install-plan.ts` - shared installer planning and apply logic.

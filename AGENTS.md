@@ -12,7 +12,7 @@ Before making product, architecture, documentation, or planning changes, read th
 
 Keep the distinction between source project Markdown and installable envelope Markdown clear:
 
-- source project Markdown documents the `ai-first` OSS project itself;
+- source project Markdown (not the `.ai-first` directory) documents the `ai-first` OSS project itself, such as root `AGENTS.md`, root `PRODUCT.md`, README, site docs, Wiki, Discussions, Issues, and release notes;
 - installable envelope Markdown lives under `envelope/files` and is installed into user repositories.
 
 If a task is ambiguous, identify which Markdown layer is affected before editing.
