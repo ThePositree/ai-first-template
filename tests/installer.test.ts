@@ -91,6 +91,7 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
+    expect(manifest.managedFiles).toContain(".ai-first/context/PRODUCT.md");
     expect(manifest.managedFiles).toContain(".ai-first/context/task-source.md");
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/MIGRATION_RECORD.md"
@@ -273,7 +274,7 @@ describe("installer", () => {
 
   test("reports conflicts without writing files for unsafe existing paths", async () => {
     const target = await makeTarget("conflict");
-    await mkdir(path.join(target, ".ai-first", "context", "PROJECT.md"), {
+    await mkdir(path.join(target, ".ai-first", "context", "PRODUCT.md"), {
       recursive: true,
     });
 
@@ -281,7 +282,7 @@ describe("installer", () => {
 
     expect(result.code).toBe(1);
     expect(result.stdout).toContain("Conflicts: 1");
-    expect(result.stdout).toContain(".ai-first/context/PROJECT.md");
+    expect(result.stdout).toContain(".ai-first/context/PRODUCT.md");
     expect(result.stdout).toContain(
       "Reason: An existing path is not a regular file."
     );

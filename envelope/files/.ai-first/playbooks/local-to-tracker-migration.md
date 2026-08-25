@@ -16,7 +16,7 @@ Read the local task state:
 - `.ai-first/context/IN_PROGRESS.md`
 - `.ai-first/context/BACKLOG.md`
 - `.ai-first/context/IDEAS.md`
-- `.ai-first/context/PROJECT.md`
+- `.ai-first/context/PRODUCT.md`
 - relevant requirements, decisions, incidents, or changelog entries only when needed to write accurate tracker items.
 
 ## Owner Briefing

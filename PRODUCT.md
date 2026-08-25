@@ -1,6 +1,6 @@
-# Project
+# Product
 
-## What This Project Is
+## What This Product Is
 
 AI-first is a Markdown-first project memory layer for AI-assisted repositories.
 

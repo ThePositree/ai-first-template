@@ -6,7 +6,7 @@ This directory is local Markdown memory for agents working in this repository. I
 
 Read this file first, then load only the files that match the owner's request.
 
-- `.ai-first/context/PROJECT.md` - project identity, direction, constraints, and useful links.
+- `.ai-first/context/PRODUCT.md` - product identity, direction, constraints, and useful links.
 - `.ai-first/context/IN_PROGRESS.md` - active work, if the repository uses local AI-first task state.
 - `.ai-first/context/CHANGELOG.md` - recent changes when history matters.
 - `.ai-first/context/BACKLOG.md` - approved future work.

@@ -76,7 +76,7 @@ const memoryFiles = [
     text: "Minimal startup route.",
   },
   {
-    file: "PROJECT.md",
+    file: "PRODUCT.md",
     folder: contextFolder,
     text: "Product truth and success shape.",
   },
