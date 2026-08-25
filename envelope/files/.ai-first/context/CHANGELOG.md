@@ -9,4 +9,5 @@ Keep this file focused on recent hot-read history. When it grows past roughly th
 ## Uninitialized
 
 - AI-first memory installed.
+- Agents can migrate AI-first task state to GitHub Issues, Linear, Jira, Yandex Tracker, or another tracker when the owner asks by briefing first, planning records, getting apply confirmation, and keeping exactly one active task source of truth.
 - No project-specific history has been recorded yet.

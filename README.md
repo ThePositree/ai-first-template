@@ -8,7 +8,7 @@ The installed model is passive by default: projects get a root `AGENTS.md` hando
 
 Installed memory covers project context, active work, backlog, ideas, changelog/archive history, ADRs, and post-mortem templates. Agents read the smallest startup context first and load more detailed workflow guidance only when the current request calls for it.
 
-AI-first can also help move task state into GitHub, Linear, Jira, Yandex Tracker, or another tracker when the owner asks an agent to do it. This is migration, not background mirroring: after migration, exactly one task source of truth should remain active. For GitHub, the agent briefs the owner, checks available GitHub surfaces, asks before using or enabling Projects/Wiki/Discussions, shows a plan, gets confirmation, and then creates the chosen GitHub entities with the tools available in that repository.
+AI-first can also help move task state into GitHub Issues, Linear, Jira, Yandex Tracker, or another tracker when the owner asks an agent to do it. This is migration, not background mirroring: after migration, exactly one task source of truth should remain active. The agent briefs the owner, checks available tracker surfaces, asks before using or enabling optional surfaces, shows a plan, gets confirmation, and then creates the chosen records with the tools available in that repository.
 
 ## Documentation Layers
 
@@ -40,4 +40,4 @@ pnpm docs:build
 pnpm install:local -- tmp/demo-project
 ```
 
-Installed projects do not receive npm scripts for GitHub export. The owner asks their agent to move `.ai-first` memory into GitHub; the agent uses the installed instructions and whatever GitHub tooling is available in that repository.
+Installed projects do not receive npm scripts for tracker migration. The owner asks their agent to move `.ai-first` task state into or out of GitHub Issues, Linear, Jira, Yandex Tracker, or another tracker; the agent uses the installed instructions and whatever tracker tooling is available in that repository.

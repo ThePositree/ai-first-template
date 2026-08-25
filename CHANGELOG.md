@@ -6,6 +6,7 @@ Recent project history. Newest entries first. Use dates in `YYYY-MM-DD` format.
 
 ## 2026-08-25
 
+- Replaced installed GitHub-sync envelope guidance with tracker-neutral task-source policy and local-to-tracker / tracker-to-local migration playbooks.
 - Rebuilt the installable envelope around passive progressive disclosure: removed the first-run marker, shortened startup routing, moved detailed workflows into playbooks, and stopped installer logic from special-casing `FIRST_RUN.md`.
 - Aligned source project documentation with the current product model: AI-first is Markdown-first, passive by default, progressive-disclosure oriented, playbook-based, and tracker-migration friendly.
 - Clarified the source project Markdown versus installable envelope Markdown boundary in public docs.

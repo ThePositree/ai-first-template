@@ -91,6 +91,7 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
+    expect(manifest.managedFiles).toContain(".ai-first/context/task-source.md");
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/MIGRATION_RECORD.md"
     );
@@ -100,6 +101,12 @@ describe("installer", () => {
     );
     expect(manifest.managedFiles).toContain(
       ".ai-first/playbooks/memory-maintenance.md"
+    );
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/local-to-tracker-migration.md"
+    );
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/tracker-to-local-migration.md"
     );
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
@@ -114,6 +121,12 @@ describe("installer", () => {
     ).resolves.toContain("Changelog Archive");
     await expect(
       readFile(
+        path.join(target, ".ai-first", "context", "task-source.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Task Source");
+    await expect(
+      readFile(
         path.join(target, ".ai-first", "context", "MIGRATION_RECORD.md"),
         "utf-8"
       )
@@ -121,6 +134,40 @@ describe("installer", () => {
     await expect(
       readFile(path.join(target, ".ai-first", "FIRST_RUN.md"), "utf-8")
     ).rejects.toThrow();
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "playbooks", "tracker-migration.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Tracker Migration");
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "playbooks", "memory-maintenance.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Memory Maintenance");
+    await expect(
+      readFile(
+        path.join(
+          target,
+          ".ai-first",
+          "playbooks",
+          "local-to-tracker-migration.md"
+        ),
+        "utf-8"
+      )
+    ).resolves.toContain("Local To Tracker Migration");
+    await expect(
+      readFile(
+        path.join(
+          target,
+          ".ai-first",
+          "playbooks",
+          "tracker-to-local-migration.md"
+        ),
+        "utf-8"
+      )
+    ).resolves.toContain("Tracker To Local Migration");
     await expect(
       readFile(
         path.join(
