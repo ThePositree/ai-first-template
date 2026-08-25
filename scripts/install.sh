@@ -76,11 +76,6 @@ target_parent=$(dirname -- "$target")
 target_name=$(basename -- "$target")
 mkdir -p "$target_parent"
 target=$(CDPATH= cd -- "$target_parent" && pwd)/$target_name
-is_existing_install=0
-if [ -e "$target/.ai-first/manifest.json" ]; then
-  is_existing_install=1
-fi
-
 if [ -z "$tmp_dir" ]; then
   tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/ai-first.XXXXXX")
 fi
@@ -94,9 +89,6 @@ conflicts="$work_dir/conflicts"
 
 find "$envelope_root" -type f | sort | while IFS= read -r source_file; do
   relative_path=$(relative_to_envelope "$source_file")
-  if [ "$is_existing_install" -eq 1 ] && [ "$relative_path" = ".ai-first/FIRST_RUN.md" ]; then
-    continue
-  fi
 
   printf '%s\n' "$relative_path" >>"$managed_files"
   destination=$(target_path "$relative_path")
@@ -206,9 +198,6 @@ mkdir -p "$target"
 
 find "$envelope_root" -type f | sort | while IFS= read -r source_file; do
   relative_path=$(relative_to_envelope "$source_file")
-  if [ "$is_existing_install" -eq 1 ] && [ "$relative_path" = ".ai-first/FIRST_RUN.md" ]; then
-    continue
-  fi
 
   destination=$(target_path "$relative_path")
   mkdir -p "$(dirname -- "$destination")"
