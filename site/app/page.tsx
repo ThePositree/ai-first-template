@@ -25,41 +25,42 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-const installCommand = "curl -fsSL https://ai-first.dev/install | sh";
+const installCommand =
+  "curl -fsSL https://raw.githubusercontent.com/ThePositree/ai-first-template/main/scripts/install.sh | sh -s -- /path/to/repo";
 const contextFolder = ".ai-first/context";
 
 const promptCases = [
   {
     icon: GitBranch,
     prompt:
-      "Scan this codebase and fill the AI-first files with the product goal, current architecture, active work, risks, backlog candidates, and important decisions you can infer. Ask me before treating ideas as approved work.",
-    text: "Turn an existing repo into a first working memory.",
+      "Read the AI-first startup context, then fill the project memory with the product goal, current architecture, active work, risks, backlog candidates, and important decisions you can infer. Ask me before treating ideas as approved work.",
+    text: "Turn an existing repo into a first useful memory.",
     title: "Bootstrap",
     value: "bootstrap",
   },
   {
     icon: TerminalWindow,
     prompt:
-      "Build me a clean dashboard over the .ai-first Markdown files so I can review and edit active work, backlog, ideas, ADRs, and changelog in one UI.",
-    text: "Make a beautiful tracker when you want one.",
-    title: "Dashboard",
-    value: "dashboard",
+      "Create a focused playbook for our release process under AI-first guidance. Keep it in plain Markdown, link the relevant context, and make sure agents load it only for release work.",
+    text: "Add detailed workflow guidance without bloating startup.",
+    title: "Playbook",
+    value: "playbook",
   },
   {
     icon: MagicWand,
     prompt:
-      "Take everything I just said, separate active work from backlog and loose ideas, then update the AI-first files. Ask before moving any idea into approved work.",
-    text: "Speak messy. Let the agent organize it.",
+      "Take everything I just said, separate active work from backlog and loose ideas, then update the AI-first files. Ask before moving any idea into approved work or changing the task source of truth.",
+    text: "Speak naturally. Let the agent organize memory.",
     title: "Sort thoughts",
     value: "sort-thoughts",
   },
   {
     icon: Lightbulb,
     prompt:
-      "Read the AI-first memory and tell me which ideas look most valuable, which backlog items are stale, and what we should build next. Do not change files yet.",
-    text: "Use memory as strategy, not storage.",
-    title: "Pick next",
-    value: "pick-next",
+      "Plan a migration of our local AI-first task state into GitHub Issues. Show the proposed entities and source-of-truth policy first; do not write to GitHub until I approve.",
+    text: "Move task state to a tracker deliberately.",
+    title: "Migrate",
+    value: "migrate",
   },
 ];
 
@@ -72,7 +73,7 @@ const memoryFiles = [
   {
     file: "README.md",
     folder: ".ai-first",
-    text: "Read order and operating rules.",
+    text: "Minimal startup route.",
   },
   {
     file: "PROJECT.md",
@@ -104,6 +105,11 @@ const memoryFiles = [
     folder: contextFolder,
     text: "Trade-offs, incidents, and follow-ups.",
   },
+  {
+    file: "playbooks/",
+    folder: ".ai-first",
+    text: "Detailed workflows loaded only when triggered.",
+  },
 ];
 
 const callouts = [
@@ -114,18 +120,18 @@ const callouts = [
   },
   {
     code: "sh",
-    label: "ONE\nCOMMAND",
-    text: "Zero config required.",
+    label: "PASSIVE\nDEFAULT",
+    text: "No daemon or sync loop.",
   },
   {
     code: "ag",
     label: "AGENTS.MD\nHOOK",
-    text: "Every agent inherits context.",
+    text: "Every agent knows where to start.",
   },
   {
     code: "fs",
-    label: "LOCAL\nSTATE",
-    text: "Files stay in your repo.",
+    label: "TRACKER\nMIGRATION",
+    text: "One task source at a time.",
   },
 ];
 
@@ -135,12 +141,12 @@ const manifesto = [
     title: "You steer.",
   },
   {
-    text: "Active work, backlog, ideas, and recent history stay current.",
-    title: "The agent maintains.",
+    text: "Project context, decisions, and task state stay inspectable.",
+    title: "The repo remembers.",
   },
   {
-    text: "Local Markdown survives context windows, sessions, and model swaps.",
-    title: "The repo remembers.",
+    text: "Detailed workflow guidance loads only when the request needs it.",
+    title: "The agent reads less.",
   },
 ];
 
@@ -154,14 +160,14 @@ const philosophy = [
   {
     icon: Stack,
     label: "The solution",
-    text: "Prompts over local Markdown turn conversations, ideas, and decisions into project context your agent can maintain.",
-    title: "AI-first keeps the useful workflows.",
+    text: "Local Markdown turns conversations, ideas, and decisions into project context your agent can inspect and maintain.",
+    title: "AI-first keeps the useful memory.",
   },
   {
     icon: CheckCircle,
     label: "The result",
-    text: "Then keep building. Every future agent gets a handoff before it starts changing the repository.",
-    title: "One install. Local Markdown.",
+    text: "Then keep building. Every future agent gets a compact handoff before it decides what else to read.",
+    title: "One install. Progressive context.",
   },
 ];
 
@@ -176,7 +182,7 @@ const properties = [
   },
   {
     label: "AGENT NATIVE",
-    text: "Reads before every session.",
+    text: "Reads only what it needs.",
   },
   {
     label: "YOURS TO OWN",
@@ -255,7 +261,7 @@ const Header = () => (
             buttonVariants({ size: "lg" }),
             "rounded-none font-semibold"
           )}
-          href="https://github.com/ai-first"
+          href="https://github.com/ThePositree/ai-first-template"
         >
           <GithubLogo data-icon="inline-start" weight="fill" />
           GitHub
@@ -286,15 +292,15 @@ const HeroSection = () => (
 
           <div className="flex flex-col gap-5">
             <h1 className="max-w-[9ch] text-6xl leading-[0.9] font-black tracking-tight text-balance sm:text-7xl lg:text-8xl xl:text-[7rem]">
-              A tiny task tracker<span className="text-primary">.</span>
+              Markdown memory<span className="text-primary">.</span>
             </h1>
             <p className="text-muted-foreground max-w-lg text-lg leading-8">
               For your coding agent.
             </p>
             <p className="text-muted-foreground/70 max-w-xl text-base leading-7">
-              Install AI-first into any repo and your agent gets a local place
-              to track active work, approved backlog, ideas, decisions, and what
-              changed.
+              Install AI-first into any repo and your agent gets passive,
+              inspectable context for project direction, decisions, active work,
+              ideas, and detailed playbooks.
             </p>
           </div>
 
@@ -529,7 +535,7 @@ const MemorySection = () => (
         <div className="flex flex-col gap-5 lg:sticky lg:top-28">
           <SectionEyebrow>Structure</SectionEyebrow>
           <h2 className="text-4xl leading-tight font-black text-balance">
-            The installer adds an
+            The installer adds a
             <br />
             <span className="text-primary">AGENTS.md</span> hook.
           </h2>
@@ -539,11 +545,13 @@ const MemorySection = () => (
               .ai-first
             </code>{" "}
             and injects a short handoff into the root AGENTS.md. That handoff
-            tells every future agent to read the AI-first files before working.
+            tells every future agent where to start, then lets the current
+            request decide which deeper context or playbooks are worth loading.
           </p>
           <p className="text-muted-foreground/50 font-mono text-xs leading-6">
-            Only AGENTS.md stays in the repo root. The tracker itself lives
-            under .ai-first/context.
+            Only AGENTS.md stays in the repo root. AI-first memory lives under
+            .ai-first, and task state should migrate to a tracker only when the
+            owner chooses that source of truth.
           </p>
         </div>
 
@@ -606,10 +614,10 @@ const FinalCta = () => (
     <Container className="relative flex max-w-3xl flex-col items-center gap-8">
       <div className="flex flex-col gap-4">
         <h2 className="text-5xl leading-tight font-black text-balance sm:text-6xl">
-          Give the repo a memory your agent can maintain.
+          Give the repo memory your agent can inspect.
         </h2>
         <p className="text-muted-foreground/65 text-lg">
-          One install. Local Markdown. Then keep building.
+          One install. Passive Markdown. Then keep building.
         </p>
       </div>
 
@@ -620,7 +628,7 @@ const FinalCta = () => (
           buttonVariants({ variant: "ghost" }),
           "text-muted-foreground hover:text-foreground rounded-none"
         )}
-        href="https://github.com/ai-first"
+        href="https://github.com/ThePositree/ai-first-template"
       >
         <GithubLogo data-icon="inline-start" weight="fill" />
         View on GitHub

@@ -29,7 +29,9 @@ Milestones represent releases or larger goals. Do not create release-tracking is
 
 Project `ai-first` is a workflow view, not the source of truth by itself. Keep issue bodies clear enough to stand on their own.
 
-Before adding, editing, closing, deleting, or otherwise changing any task, issue, project item, milestone, or tracker item, show the owner exactly what task change you intend to make and wait for explicit approval. Do not make task tracker changes first and explain them afterward.
+Before adding, editing, closing, deleting, or otherwise changing any task, issue, project item, milestone, Discussion, Wiki page, or tracker item, show the owner exactly what change you intend to make and wait for explicit approval. Do not make task tracker or planning-source changes first and explain them afterward.
+
+If a requested repository change depends on external GitHub planning or product-memory updates that require approval, do not merely report that those updates were skipped. Before the final response, propose the exact external changes for owner approval, including the target surface, target item or page, and draft text or replacement summary. If the owner has not approved them yet, leave the external surfaces unchanged and clearly report that the local repository work is complete but the external planning/product-memory update is pending approval.
 
 ## Documentation Impact Check
 

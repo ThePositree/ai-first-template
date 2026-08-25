@@ -4,6 +4,12 @@ Recent project history. Newest entries first. Use dates in `YYYY-MM-DD` format.
 
 ---
 
+## 2026-08-25
+
+- Aligned source project documentation with the current product model: AI-first is Markdown-first, passive by default, progressive-disclosure oriented, playbook-based, and tracker-migration friendly.
+- Clarified the source project Markdown versus installable envelope Markdown boundary in public docs.
+- Added a next-release checklist so release notes keep the passive/progressive defaults and task-source migration model visible.
+
 ## 2026-08-07
 
 - Added an independent redesign for the documentation site using the Repository Flight Recorder direction, with `site/PRODUCT.md` and `site/DESIGN.md` recorded.

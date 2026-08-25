@@ -92,6 +92,7 @@ describe("installer", () => {
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
     expect(manifest.managedFiles).toContain(".ai-first/context/github-sync.md");
+    expect(manifest.managedFiles).toContain(".ai-first/playbooks/README.md");
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
     );

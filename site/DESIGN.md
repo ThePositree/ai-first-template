@@ -1,6 +1,6 @@
 # Design System: AI-first Dark Technical Page
 
-The `site` homepage presents AI-first as a tiny local task tracker for coding agents. The page should feel direct, technical, local-first, and open-source oriented.
+The `site` homepage presents AI-first as Markdown-first project memory for coding agents. The page should feel direct, technical, local-first, and open-source oriented.
 
 Current direction:
 
@@ -8,7 +8,7 @@ Current direction:
 - Keep the implementation on project-native technology: Next.js App Router, Tailwind v4 tokens, shadcn/base primitives, Phosphor icons, and existing Next-managed fonts.
 - Do not import external CSS font URLs or hand-roll inline SVG icons for UI controls.
 - Use sharp rectangular surfaces, thin borders, mono labels, subtle grid texture, lime primary accent, and low-noise dark cards.
-- Lead with one-command installation, the tiny task tracker positioning, local Markdown, prompt-powered workflows, and the `AGENTS.md` handoff.
+- Lead with one-command installation, passive local Markdown, progressive-disclosure context loading, playbook-guided workflows, tracker migration, and the `AGENTS.md` handoff.
 - Larger screens use a fixed nav, hero callouts, section strips, tabbed use cases, and a dense memory file list. Mobile keeps the same story as a single readable column.
 - Avoid fake metrics, testimonials, customer logos, or unsupported launch proof.
 - Use shadcn/ui as the first source for reusable primitives. Before every site layout or component change, scan the current shadcn registry for a suitable primitive, inspect docs/dry-runs, and install matching primitives through the CLI before custom Tailwind markup.
