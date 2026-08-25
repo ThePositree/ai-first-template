@@ -92,7 +92,16 @@ describe("installer", () => {
       ".ai-first/context/CHANGELOG_ARCHIVE.md"
     );
     expect(manifest.managedFiles).toContain(".ai-first/context/task-source.md");
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/context/MIGRATION_RECORD.md"
+    );
     expect(manifest.managedFiles).toContain(".ai-first/playbooks/README.md");
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/tracker-migration.md"
+    );
+    expect(manifest.managedFiles).toContain(
+      ".ai-first/playbooks/memory-maintenance.md"
+    );
     expect(manifest.managedFiles).toContain(
       ".ai-first/playbooks/local-to-tracker-migration.md"
     );
@@ -102,6 +111,7 @@ describe("installer", () => {
     expect(manifest.managedFiles).toContain(
       ".ai-first/context/post_mortems/_template.md"
     );
+    expect(manifest.managedFiles).not.toContain(".ai-first/FIRST_RUN.md");
 
     await expect(
       readFile(
@@ -115,6 +125,27 @@ describe("installer", () => {
         "utf-8"
       )
     ).resolves.toContain("Task Source");
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "context", "MIGRATION_RECORD.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Migration Record");
+    await expect(
+      readFile(path.join(target, ".ai-first", "FIRST_RUN.md"), "utf-8")
+    ).rejects.toThrow();
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "playbooks", "tracker-migration.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Tracker Migration");
+    await expect(
+      readFile(
+        path.join(target, ".ai-first", "playbooks", "memory-maintenance.md"),
+        "utf-8"
+      )
+    ).resolves.toContain("Memory Maintenance");
     await expect(
       readFile(
         path.join(
@@ -152,6 +183,29 @@ describe("installer", () => {
 
     const agents = await readFile(path.join(target, "AGENTS.md"), "utf-8");
     expect(agents).toContain(".ai-first/README.md");
+    expect(agents).not.toContain("FIRST_RUN");
+
+    const readme = await readFile(
+      path.join(target, ".ai-first", "README.md"),
+      "utf-8"
+    );
+    expect(readme).toContain("Startup Route");
+    expect(readme).toContain("load only the files that match");
+    expect(readme).not.toContain("First Run");
+    expect(readme).not.toContain("fresh chat, read");
+
+    const activeWork = await readFile(
+      path.join(target, ".ai-first", "context", "IN_PROGRESS.md"),
+      "utf-8"
+    );
+    expect(activeWork).toContain("No active work recorded yet.");
+    expect(activeWork).not.toContain("Bootstrap");
+
+    const changelog = await readFile(
+      path.join(target, ".ai-first", "context", "CHANGELOG.md"),
+      "utf-8"
+    );
+    expect(changelog).not.toContain("First agent must complete bootstrap");
   });
 
   test("injects AI-first handoff into an existing owner-authored AGENTS.md", async () => {

@@ -1,6 +1,6 @@
 # Requirements
 
-Status: uninitialized.
+Status: not recorded.
 
 ## Functional Requirements
 
@@ -18,7 +18,7 @@ Status: uninitialized.
 
 ## Non-Functional Requirements
 
-TBD.
+No non-functional requirements recorded yet.
 
 ## Constraints
 
@@ -31,4 +31,4 @@ TBD.
 
 ## Open Questions
 
-TBD.
+No open questions recorded yet.

@@ -1,19 +1,19 @@
 # Project
 
-This project has not been initialized yet. Ask the owner what they want to build, then fill this memory from their answer.
+Status: not recorded.
 
-Status: uninitialized.
+Project-specific memory has not been recorded yet.
 
-This file is the product source of truth after first-run bootstrap.
+Use this file for durable project identity, direction, constraints, and links when the owner asks the agent to preserve that context.
 
-Fill during bootstrap:
+Suggested sections:
 
-- **Product:** TBD
-- **Audience:** TBD
-- **Problem:** TBD
-- **MVP:** TBD
-- **Non-goals:** TBD
-- **Preferred stack:** TBD
-- **Constraints:** TBD
-- **Success criteria:** TBD
-- **Known risks:** TBD
+- Product
+- Audience
+- Problem
+- Current direction
+- Non-goals
+- Preferred stack
+- Constraints
+- Success criteria
+- Known risks

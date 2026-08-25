@@ -1,41 +1,39 @@
-# AI-first Project Memory
+# AI-first Memory
 
-This directory is the local memory for the AI agent working on this repository. It does not replace the agent's general skills. It gives the agent durable project context so the owner has to repeat less and new chats can recover the current state.
+This directory is local Markdown memory for agents working in this repository. It is passive: no daemon, sync loop, script, or setup step is required after installation.
 
-## First Read
+## Startup Route
 
-At the start of a fresh chat, read the smallest useful context first:
+Read this file first, then load only the files that match the owner's request.
 
-1. `.ai-first/context/PROJECT.md`
-2. `.ai-first/context/IN_PROGRESS.md`
-3. `.ai-first/context/CHANGELOG.md`
+- `.ai-first/context/PROJECT.md` - project identity, direction, constraints, and useful links.
+- `.ai-first/context/IN_PROGRESS.md` - active work, if the repository uses local AI-first task state.
+- `.ai-first/context/CHANGELOG.md` - recent changes when history matters.
+- `.ai-first/context/BACKLOG.md` - approved future work.
+- `.ai-first/context/IDEAS.md` - saved ideas that are not approved work.
+- `.ai-first/context/REQUIREMENTS.md` - behavior, constraints, and acceptance criteria.
+- `.ai-first/context/ARCHITECTURE.md` - system shape, components, and operational notes.
+- `.ai-first/context/task-source.md` - current task source of truth and tracker policy.
+- `.ai-first/context/MIGRATION_RECORD.md` - owner-approved task-source migration decisions, if any.
+- `.ai-first/context/decisions/` - ADRs and durable trade-offs.
+- `.ai-first/context/post_mortems/` - incident records.
 
-Then load more context only when the current request needs it:
+Read `.ai-first/context/CHANGELOG_ARCHIVE.md` only when current memory points to older history or the task depends on archived entries.
 
-- `.ai-first/context/VISION.md` for product direction or audience questions;
-- `.ai-first/context/REQUIREMENTS.md` for behavior, constraints, or acceptance criteria;
-- `.ai-first/context/ARCHITECTURE.md` for system shape, components, data flow, or operational questions;
-- `.ai-first/context/task-source.md` for the current task source of truth or tracker migration policy;
-- `.ai-first/context/BACKLOG.md` for approved future work;
-- `.ai-first/context/IDEAS.md` for unapproved possibilities;
-- relevant files in `.ai-first/context/decisions/` for durable trade-offs.
+## Playbooks
 
-Read `.ai-first/context/CHANGELOG_ARCHIVE.md` only when current memory links to older history or the task depends on history outside the recent changelog.
+Playbooks are detailed workflows. Open one only when the current request triggers it:
 
-Read `.ai-first/playbooks/*` only when the owner request or current task clearly triggers that workflow. Playbooks are detailed guidance, not startup context.
+- `.ai-first/playbooks/memory-maintenance.md` - updating context, task state, changelog, ADRs, or post-mortems.
+- `.ai-first/playbooks/tracker-migration.md` - moving local AI-first task state into GitHub, Linear, Jira, Yandex Tracker, or another tracker.
+- `.ai-first/playbooks/local-to-tracker-migration.md` - moving local task state into a tracker with split inbound/outbound guidance.
+- `.ai-first/playbooks/tracker-to-local-migration.md` - moving tracker task state back into local AI-first Markdown.
 
-## First Run
+## Boundaries
 
-If `.ai-first/FIRST_RUN.md` exists, this project has not been initialized yet. Ask the owner to describe what they want to build in their own words. Do not present a long questionnaire.
+The owner controls product direction, priorities, scope changes, approval of trade-offs, and writes to external systems.
 
-After the owner responds:
-
-- extract the product goal, target users, MVP shape, constraints, preferred stack, risks, and success criteria;
-- ask only the minimum necessary follow-up questions if important information is missing, risky, or contradictory;
-- fill the context files under `.ai-first/context`;
-- create active work, approved backlog entries, and saved ideas when appropriate;
-- append the first changelog entry;
-- remove `.ai-first/FIRST_RUN.md`.
+Agents may update `.ai-first/context` when the owner asks for work that changes durable project memory. Ask before converting ideas into approved work, changing priorities, replacing owner-authored files, or writing to external trackers.
 
 ## Task State
 
@@ -47,39 +45,6 @@ AI-first uses one active task source at a time:
 - **External tracker task source:** task state lives in GitHub Issues, Linear, Jira, Yandex Tracker, or another selected tracker. Local task files become pointers and stop acting as backlog or active-work records.
 
 When changing task state, summarize the task delta to the owner in the same chat turn.
-
-Backlog priorities:
-
-- **P0** - urgent correctness, safety, or install/update trust.
-- **P1** - important product or agent-workflow improvement.
-- **P2** - useful follow-up after higher-priority work.
-
-Preserve priorities when moving work between active work, backlog, changelog entries, future exports, or incident follow-ups. New backlog entries should use headings like `## P1 - Short Task Name`.
-
-## Backlog And Ideas Stewardship
-
-During onboarding, listen for three kinds of work:
-
-- **Active work:** what the owner wants to do now. Put only this in `.ai-first/context/IN_PROGRESS.md`.
-- **Approved backlog:** concrete unfinished work the owner has approved but does not want to do immediately. Put this in `.ai-first/context/BACKLOG.md`.
-- **Saved ideas:** loose possibilities, reminders, or "maybe later" thoughts. Put these in `.ai-first/context/IDEAS.md`.
-
-Do not treat every owner thought as backlog. If the owner sounds exploratory, save it as an idea or ask a short clarifying question.
-
-After onboarding:
-
-- the owner can speak naturally;
-- the agent keeps task memory current;
-- the agent may add obvious active-work updates when work changes;
-- the agent must ask before moving an idea into approved backlog;
-- stale backlog or ideas should be surfaced during fresh-chat context reading when they matter to the next step;
-- when a saved idea becomes relevant, briefly explain why it fits or why it should wait, then ask before moving it into backlog, specs, or code.
-
-## Owner And Agent Boundaries
-
-The owner controls product direction, priorities, scope changes, approval of trade-offs, and whether ideas or incident follow-ups become approved work.
-
-Agents may maintain memory files, changelog entries, task-state moves, post-mortems, and proposed corrective actions when those updates follow clear owner direction.
 
 ## Memory Hygiene
 
@@ -101,7 +66,7 @@ For incidents, capture the failure, isolate the smallest credible cause, apply t
 
 When the owner asks to move task state between `.ai-first` and GitHub Issues, Linear, Jira, Yandex Tracker, or another tracker, do it as an agent workflow and a source-of-truth migration. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script.
 
-Read `.ai-first/context/task-source.md`, then read only the matching playbook:
+Read `.ai-first/context/task-source.md` and `.ai-first/context/MIGRATION_RECORD.md`, then read only the matching playbook:
 
 - `.ai-first/playbooks/local-to-tracker-migration.md` when moving local task state into a tracker;
 - `.ai-first/playbooks/tracker-to-local-migration.md` when moving tracker task state back into local AI-first Markdown.

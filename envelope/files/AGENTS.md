@@ -1,12 +1,10 @@
-# AGENTS.md - AI-first handoff
+# AGENTS.md - AI-first
 
 This repository uses `ai-first`.
 
-Before working, read `.ai-first/README.md` first. It explains where the local project memory lives and how to recover context in a fresh chat.
+Before working, read `.ai-first/README.md` first. It is a startup router for the local project memory.
 
-If `.ai-first/FIRST_RUN.md` exists, the project has not been initialized yet. Follow the first-run instructions in `.ai-first/README.md`.
-
-Read `.ai-first/playbooks/*` only when the owner request or current task clearly triggers that workflow. Playbooks are detailed guidance, not startup context.
+Load only the context files and playbooks that match the owner's request. Treat `.ai-first/playbooks/*` as detailed workflow guidance, not startup context.
 
 The owner controls product direction, priorities, scope changes, and approval of trade-offs. Agents may maintain `.ai-first/context`, changelog history, task state, and post-mortem records when those updates follow the owner's direction.
 
