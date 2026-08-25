@@ -1,6 +1,6 @@
 # AI-first Site
 
-This site presents AI-first as a tiny local task tracker for AI coding agents. The current homepage uses a serious pastel cartoon-3D visual style through generated PNG imagery, shadcn/ui primitives, copyable prompt cards, subtle CSS motion, and Tailwind composition.
+This site presents AI-first as Markdown-first project memory for AI coding agents. The current homepage uses a dark technical visual style, shadcn/ui primitives, copyable prompt cards, subtle CSS motion, and Tailwind composition.
 
 The current homepage does not use Blender models, GLB assets, Three.js, WebGL, or live 3D runtime.
 

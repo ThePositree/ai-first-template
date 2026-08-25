@@ -1,21 +1,31 @@
 # ai-first
 
-`ai-first` installs a small repository memory layer for AI-assisted projects. It does not replace the agent's existing skills or change how the owner talks to the agent; it gives the agent durable local context.
+`ai-first` installs a small Markdown-first memory layer for AI-assisted repositories. It does not replace the agent's existing skills or change how the owner talks to the agent; it gives the agent durable, inspectable local context.
 
 The goal is less repeated explanation from the owner and more informed, confident agent work across chats.
 
-The first implementation is intentionally local and inspectable: installed projects get `AGENTS.md` plus `.ai-first` memory. No global CLI, binary, `npx`, or `node_modules` is required inside the target repository.
+The installed model is passive by default: projects get a root `AGENTS.md` handoff plus a `.ai-first` Markdown workspace. There is no daemon, hosted service, hidden database, global CLI, repeated `npx`, or `node_modules` requirement inside the target repository.
 
-Installed memory covers project context, active work, backlog, ideas, changelog/archive history, ADRs, and post-mortem templates.
+Installed memory covers project context, active work, backlog, ideas, changelog/archive history, ADRs, and post-mortem templates. Agents read the smallest startup context first and load more detailed workflow guidance only when the current request calls for it.
 
-AI-first can also project that memory into GitHub when the owner asks an agent to do it. The agent briefs the owner, checks available GitHub surfaces, asks before using or enabling Projects/Wiki/Discussions, shows a plan, gets confirmation, and then creates the chosen GitHub entities with the tools available in that repository.
+AI-first can also help move task state into GitHub, Linear, Jira, Yandex Tracker, or another tracker when the owner asks an agent to do it. This is migration, not background mirroring: after migration, exactly one task source of truth should remain active. For GitHub, the agent briefs the owner, checks available GitHub surfaces, asks before using or enabling Projects/Wiki/Discussions, shows a plan, gets confirmation, and then creates the chosen GitHub entities with the tools available in that repository.
+
+## Documentation Layers
+
+This source repository contains two kinds of Markdown:
+
+- Source project Markdown explains the `ai-first` OSS project itself: `README.md`, `PROJECT.md`, `AGENTS.md`, the documentation site, changelog, release notes, GitHub Issues, Discussions, and Wiki.
+- Installable envelope Markdown lives under `envelope/files` and is copied into user repositories.
+
+Keep those layers separate. Public source docs explain the product and source development workflow; envelope docs explain what installed agents read inside a target repository.
 
 ## Repository Shape
 
-- `envelope/files` - the preserved first-run envelope installed into other repositories.
+- `PROJECT.md` - the current product model for source documentation.
+- `envelope/files` - the installable Markdown envelope copied into other repositories.
 - `src/installer` - TypeScript source for the installer.
 - `src/lib/install-plan.ts` - shared installer planning and apply logic.
-- `scripts/install.sh` - draft public install entrypoint for local development.
+- `scripts/install.sh` - public install entrypoint for local and hosted installs.
 - `site` - Next.js documentation website.
 - `rolldown.config.mjs` - Rolldown build config for the installer artifact.
 - `mise.toml` - pinned project tool versions.

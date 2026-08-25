@@ -4,19 +4,24 @@ This directory is the local memory for the AI agent working on this repository. 
 
 ## First Read
 
-At the start of a fresh chat, read these files in order:
+At the start of a fresh chat, read the smallest useful context first:
 
 1. `.ai-first/context/PROJECT.md`
-2. `.ai-first/context/VISION.md`
-3. `.ai-first/context/REQUIREMENTS.md`
-4. `.ai-first/context/ARCHITECTURE.md`
-5. `.ai-first/context/IN_PROGRESS.md`
-6. `.ai-first/context/BACKLOG.md`
-7. `.ai-first/context/IDEAS.md`
-8. `.ai-first/context/CHANGELOG.md`
-9. Relevant files in `.ai-first/context/decisions/`
+2. `.ai-first/context/IN_PROGRESS.md`
+3. `.ai-first/context/CHANGELOG.md`
+
+Then load more context only when the current request needs it:
+
+- `.ai-first/context/VISION.md` for product direction or audience questions;
+- `.ai-first/context/REQUIREMENTS.md` for behavior, constraints, or acceptance criteria;
+- `.ai-first/context/ARCHITECTURE.md` for system shape, components, data flow, or operational questions;
+- `.ai-first/context/BACKLOG.md` for approved future work;
+- `.ai-first/context/IDEAS.md` for unapproved possibilities;
+- relevant files in `.ai-first/context/decisions/` for durable trade-offs.
 
 Read `.ai-first/context/CHANGELOG_ARCHIVE.md` only when current memory links to older history or the task depends on history outside the recent changelog.
+
+Read `.ai-first/playbooks/*` only when the owner request or current task clearly triggers that workflow. Playbooks are detailed guidance, not startup context.
 
 ## First Run
 
@@ -78,6 +83,7 @@ When behavior changes, check whether the same update belongs in:
 - root `AGENTS.md`;
 - changelog or changelog archive;
 - post-mortems or ADRs;
+- playbooks;
 - public docs;
 - any generated or external tracker export.
 
@@ -85,24 +91,24 @@ Keep `CHANGELOG.md` focused on recent hot-read history. When it grows past rough
 
 For incidents, capture the failure, isolate the smallest credible cause, apply the smallest evidence-based fix, verify it, and record durable history in `context/post_mortems/` when the incident had meaningful impact or follow-ups.
 
-## GitHub Export
+## Tracker Migration
 
-When the owner asks to move AI-first memory into GitHub, do it as an agent workflow. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script; use the GitHub CLI, MCP tools, API calls, temporary scripts, or manual steps that fit the repository.
+When the owner asks to move AI-first task state into GitHub or another tracker, do it as an agent workflow and a source-of-truth migration. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script; use the tracker tools, MCP tools, API calls, temporary scripts, or manual steps that fit the repository.
 
-Run a fresh briefing first unless the owner explicitly says to reuse an existing recorded policy. Phrase the questions and answer options naturally for the owner, repository, language, and available GitHub surfaces. Cover surfaces, entity placement, scope, labels, Projects, Wiki, Discussions, relationships, existing data, sync mode, source of truth, conflicts, approvals, visibility, and dry-run preference. When presenting choices, include a way for the owner to give a custom answer.
+Run a fresh briefing first unless the owner explicitly says to reuse an existing recorded policy. Phrase the questions and answer options naturally for the owner, repository, language, and available tracker surfaces. Cover surfaces, entity placement, scope, labels, Projects, Wiki, Discussions, relationships, existing data, sync mode, source of truth, conflicts, approvals, visibility, and dry-run preference. When presenting choices, include a way for the owner to give a custom answer.
 
-Record the approved policy in `.ai-first/context/github-sync.md`. This file records briefing history and policy; it is not permission to run future GitHub writes without asking.
+For GitHub, record the approved policy in `.ai-first/context/github-sync.md`. This file records briefing history and policy; it is not permission to run future GitHub writes without asking.
 
-Use GitHub Issues and labels as the portable baseline export:
+Use GitHub Issues as the portable baseline migration target:
 
-- active work from `.ai-first/context/IN_PROGRESS.md` -> issues labeled `ai-first` and `ai-first:active`;
-- approved backlog from `.ai-first/context/BACKLOG.md` -> issues labeled `ai-first` and `ai-first:backlog`;
-- saved ideas from `.ai-first/context/IDEAS.md` -> issues labeled `ai-first` and `ai-first:idea`, with clear wording that ideas are not approved work;
-- priorities `P0`, `P1`, and `P2` -> labels `priority:P0`, `priority:P1`, and `priority:P2`;
+- active work from `.ai-first/context/IN_PROGRESS.md` -> issues or tracker items marked as active using the repository's normal conventions;
+- approved backlog from `.ai-first/context/BACKLOG.md` -> issues or tracker items marked as backlog using the repository's normal conventions;
+- saved ideas from `.ai-first/context/IDEAS.md` -> idea records with clear wording that ideas are not approved work;
+- priorities `P0`, `P1`, and `P2` -> the repository's normal priority labels or fields;
 - long-form memory -> Wiki pages when Wiki is selected and enabled; otherwise ask before using an issue summary fallback.
 
 Projects, Wiki, and Discussions are optional when the owner selects them and the repository supports them. If a selected surface is disabled or inaccessible, ask whether the owner wants it enabled. If you cannot enable it yourself, explain the exact owner action needed and wait for the owner or choose a fallback only after approval.
 
-Before writing to GitHub, show the planned entities and get explicit apply confirmation. After creating or finding GitHub entities, update their bodies with useful GitHub-native relationship links between issues, discussions, wiki pages, projects, and source `.ai-first` paths. Do not write GitHub-only relationship links back into normal `.ai-first` memory files unless the owner explicitly approves GitHub as a source of truth.
+Before writing to GitHub or another tracker, show the planned entities and get explicit apply confirmation. After creating or finding GitHub entities, update their bodies with useful GitHub-native relationship links between issues, discussions, wiki pages, projects, and source `.ai-first` paths. Do not write tracker-only relationship links back into normal `.ai-first` memory files unless the owner explicitly approves that tracker as a source of truth.
 
-Until the owner approves ongoing sync, `.ai-first/context` remains the source of truth.
+Until the owner approves a different source of truth, `.ai-first/context` remains the active task source.

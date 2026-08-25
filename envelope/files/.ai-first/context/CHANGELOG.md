@@ -9,5 +9,5 @@ Keep this file focused on recent hot-read history. When it grows past roughly th
 ## Uninitialized
 
 - AI-first memory installed.
-- Agents can export AI-first memory to GitHub when the owner asks by briefing first, planning selected GitHub surfaces, getting apply confirmation, and then asking whether ongoing sync should be kept.
+- Agents can migrate AI-first task state to GitHub or another tracker when the owner asks by briefing first, planning selected external entities, getting apply confirmation, and keeping exactly one active task source of truth.
 - First agent must complete bootstrap before implementation work.

@@ -15,7 +15,7 @@ const fontMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  description: "A tiny task tracker for AI coding agents.",
+  description: "Markdown-first project memory for AI coding agents.",
   title: "AI-first",
 };
 
