@@ -1,23 +1,23 @@
 # Vision
 
-Status: uninitialized.
+Status: not recorded.
 
 ## Direction
 
-TBD.
+No direction notes recorded yet.
 
 ## Users
 
-TBD.
+No user notes recorded yet.
 
 ## Goals
 
-TBD.
+No goals recorded yet.
 
 ## Non-Goals
 
-TBD.
+No non-goals recorded yet.
 
 ## Success
 
-TBD.
+No success criteria recorded yet.

@@ -7,7 +7,7 @@ import type {
   PlanEntry,
   PlannedFile,
 } from "../lib/install-plan.js";
-import { fileExists, repoPath, readVersion } from "../lib/project.js";
+import { repoPath, readVersion } from "../lib/project.js";
 
 interface InstallOptions {
   dryRun: boolean;
@@ -128,14 +128,7 @@ const buildInstallFiles = async (
 ): Promise<PlannedFile[]> => {
   const envelopeRoot = repoPath("envelope", "files");
 
-  const isExistingInstall = await fileExists(
-    path.join(targetRoot, ".ai-first", "manifest.json")
-  );
-  const allEnvelopeFiles = await collectFiles(envelopeRoot, targetRoot);
-  const envelopeFiles = allEnvelopeFiles.filter(
-    (file) =>
-      !(isExistingInstall && file.relativePath === ".ai-first/FIRST_RUN.md")
-  );
+  const envelopeFiles = await collectFiles(envelopeRoot, targetRoot);
 
   const managedFiles = [
     ...envelopeFiles.map((file) => file.relativePath),

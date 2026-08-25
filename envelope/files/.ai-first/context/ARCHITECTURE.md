@@ -1,36 +1,37 @@
 # Architecture
 
-Status: uninitialized.
+Status: not recorded.
 
 ## System Shape
 
-TBD.
+No architecture notes recorded yet.
 
 ## Major Components
 
-TBD.
+No component notes recorded yet.
 
 ## Data Flow
 
-TBD.
+No data-flow notes recorded yet.
 
 ## External Services
 
-Tracker migration starts with a fresh owner briefing unless the owner explicitly asks to reuse an existing recorded policy. For GitHub migrations, record the approved policy in `.ai-first/context/github-sync.md`. AI-first provides instructions and policy memory, not a prepared exporter script. GitHub Issues are the portable baseline for active/backlog work. Use the repository's normal labels or fields rather than AI-first-branded tracker metadata. Projects, Wiki, and Discussions are optional surfaces when the owner selects them and the repository supports them. Disabled or inaccessible selected surfaces require an owner question before fallback. `.ai-first/context` remains the active task source until the owner approves a different source of truth.
+No external service assumptions recorded yet.
 
 ## Operational Notes
 
-TBD.
+No operational notes recorded yet.
 
 ## Memory Hygiene
 
-When project behavior changes after bootstrap, check whether the update belongs in:
+When project behavior changes, check whether the update belongs in:
 
 - `.ai-first/context` memory;
 - root `AGENTS.md`;
 - changelog or changelog archive;
 - post-mortems or ADRs;
+- playbooks;
 - public documentation;
-- external task trackers or exports, if the owner later approves them.
+- external task trackers, when the owner has approved a tracker as the active task source.
 
 For larger projects, the memory may later evolve from a flat first-read set into a progressive graph where compact root memory points to domain-specific memory files. Keep any such references owner-visible Markdown links, and do not hide important project state in generated indexes.

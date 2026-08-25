@@ -1,114 +1,33 @@
-# AI-first Project Memory
+# AI-first Memory
 
-This directory is the local memory for the AI agent working on this repository. It does not replace the agent's general skills. It gives the agent durable project context so the owner has to repeat less and new chats can recover the current state.
+This directory is local Markdown memory for agents working in this repository. It is passive: no daemon, sync loop, script, or setup step is required after installation.
 
-## First Read
+## Startup Route
 
-At the start of a fresh chat, read the smallest useful context first:
+Read this file first, then load only the files that match the owner's request.
 
-1. `.ai-first/context/PROJECT.md`
-2. `.ai-first/context/IN_PROGRESS.md`
-3. `.ai-first/context/CHANGELOG.md`
+- `.ai-first/context/PROJECT.md` - project identity, direction, constraints, and useful links.
+- `.ai-first/context/IN_PROGRESS.md` - active work, if the repository uses local AI-first task state.
+- `.ai-first/context/CHANGELOG.md` - recent changes when history matters.
+- `.ai-first/context/BACKLOG.md` - approved future work.
+- `.ai-first/context/IDEAS.md` - saved ideas that are not approved work.
+- `.ai-first/context/REQUIREMENTS.md` - behavior, constraints, and acceptance criteria.
+- `.ai-first/context/ARCHITECTURE.md` - system shape, components, and operational notes.
+- `.ai-first/context/decisions/` - ADRs and durable trade-offs.
+- `.ai-first/context/post_mortems/` - incident records.
+- `.ai-first/context/MIGRATION_RECORD.md` - owner-approved task-source migration policy, if one exists.
 
-Then load more context only when the current request needs it:
+Read `.ai-first/context/CHANGELOG_ARCHIVE.md` only when current memory points to older history or the task depends on archived entries.
 
-- `.ai-first/context/VISION.md` for product direction or audience questions;
-- `.ai-first/context/REQUIREMENTS.md` for behavior, constraints, or acceptance criteria;
-- `.ai-first/context/ARCHITECTURE.md` for system shape, components, data flow, or operational questions;
-- `.ai-first/context/BACKLOG.md` for approved future work;
-- `.ai-first/context/IDEAS.md` for unapproved possibilities;
-- relevant files in `.ai-first/context/decisions/` for durable trade-offs.
+## Playbooks
 
-Read `.ai-first/context/CHANGELOG_ARCHIVE.md` only when current memory links to older history or the task depends on history outside the recent changelog.
+Playbooks are detailed workflows. Open one only when the current request triggers it:
 
-Read `.ai-first/playbooks/*` only when the owner request or current task clearly triggers that workflow. Playbooks are detailed guidance, not startup context.
+- `.ai-first/playbooks/memory-maintenance.md` - updating context, task state, changelog, ADRs, or post-mortems.
+- `.ai-first/playbooks/tracker-migration.md` - moving local AI-first task state into GitHub, Linear, Jira, Yandex Tracker, or another tracker.
 
-## First Run
+## Boundaries
 
-If `.ai-first/FIRST_RUN.md` exists, this project has not been initialized yet. Ask the owner to describe what they want to build in their own words. Do not present a long questionnaire.
+The owner controls product direction, priorities, scope changes, approval of trade-offs, and writes to external systems.
 
-After the owner responds:
-
-- extract the product goal, target users, MVP shape, constraints, preferred stack, risks, and success criteria;
-- ask only the minimum necessary follow-up questions if important information is missing, risky, or contradictory;
-- fill the context files under `.ai-first/context`;
-- create active work, approved backlog entries, and saved ideas when appropriate;
-- append the first changelog entry;
-- remove `.ai-first/FIRST_RUN.md`.
-
-## Task State
-
-`.ai-first/context/IN_PROGRESS.md` contains only active work. `.ai-first/context/BACKLOG.md` contains approved unfinished work. `.ai-first/context/IDEAS.md` contains saved ideas, not approved tasks.
-
-When changing task state, summarize the task delta to the owner in the same chat turn.
-
-Backlog priorities:
-
-- **P0** - urgent correctness, safety, or install/update trust.
-- **P1** - important product or agent-workflow improvement.
-- **P2** - useful follow-up after higher-priority work.
-
-Preserve priorities when moving work between active work, backlog, changelog entries, future exports, or incident follow-ups. New backlog entries should use headings like `## P1 - Short Task Name`.
-
-## Backlog And Ideas Stewardship
-
-During onboarding, listen for three kinds of work:
-
-- **Active work:** what the owner wants to do now. Put only this in `.ai-first/context/IN_PROGRESS.md`.
-- **Approved backlog:** concrete unfinished work the owner has approved but does not want to do immediately. Put this in `.ai-first/context/BACKLOG.md`.
-- **Saved ideas:** loose possibilities, reminders, or "maybe later" thoughts. Put these in `.ai-first/context/IDEAS.md`.
-
-Do not treat every owner thought as backlog. If the owner sounds exploratory, save it as an idea or ask a short clarifying question.
-
-After onboarding:
-
-- the owner can speak naturally;
-- the agent keeps task memory current;
-- the agent may add obvious active-work updates when work changes;
-- the agent must ask before moving an idea into approved backlog;
-- stale backlog or ideas should be surfaced during fresh-chat context reading when they matter to the next step;
-- when a saved idea becomes relevant, briefly explain why it fits or why it should wait, then ask before moving it into backlog, specs, or code.
-
-## Owner And Agent Boundaries
-
-The owner controls product direction, priorities, scope changes, approval of trade-offs, and whether ideas or incident follow-ups become approved work.
-
-Agents may maintain memory files, changelog entries, task-state moves, post-mortems, and proposed corrective actions when those updates follow clear owner direction.
-
-## Memory Hygiene
-
-When behavior changes, check whether the same update belongs in:
-
-- `.ai-first/context` source memory;
-- root `AGENTS.md`;
-- changelog or changelog archive;
-- post-mortems or ADRs;
-- playbooks;
-- public docs;
-- any generated or external tracker export.
-
-Keep `CHANGELOG.md` focused on recent hot-read history. When it grows past roughly the newest 25 dated entries or becomes too heavy for fresh-chat recovery, move the oldest complete dated sections into `CHANGELOG_ARCHIVE.md`.
-
-For incidents, capture the failure, isolate the smallest credible cause, apply the smallest evidence-based fix, verify it, and record durable history in `context/post_mortems/` when the incident had meaningful impact or follow-ups.
-
-## Tracker Migration
-
-When the owner asks to move AI-first task state into GitHub or another tracker, do it as an agent workflow and a source-of-truth migration. The owner should be able to ask naturally; do not require them to learn a CLI, hook, or skill. Do not expect AI-first to provide a prepared export script; use the tracker tools, MCP tools, API calls, temporary scripts, or manual steps that fit the repository.
-
-Run a fresh briefing first unless the owner explicitly says to reuse an existing recorded policy. Phrase the questions and answer options naturally for the owner, repository, language, and available tracker surfaces. Cover surfaces, entity placement, scope, labels, Projects, Wiki, Discussions, relationships, existing data, sync mode, source of truth, conflicts, approvals, visibility, and dry-run preference. When presenting choices, include a way for the owner to give a custom answer.
-
-For GitHub, record the approved policy in `.ai-first/context/github-sync.md`. This file records briefing history and policy; it is not permission to run future GitHub writes without asking.
-
-Use GitHub Issues as the portable baseline migration target:
-
-- active work from `.ai-first/context/IN_PROGRESS.md` -> issues or tracker items marked as active using the repository's normal conventions;
-- approved backlog from `.ai-first/context/BACKLOG.md` -> issues or tracker items marked as backlog using the repository's normal conventions;
-- saved ideas from `.ai-first/context/IDEAS.md` -> idea records with clear wording that ideas are not approved work;
-- priorities `P0`, `P1`, and `P2` -> the repository's normal priority labels or fields;
-- long-form memory -> Wiki pages when Wiki is selected and enabled; otherwise ask before using an issue summary fallback.
-
-Projects, Wiki, and Discussions are optional when the owner selects them and the repository supports them. If a selected surface is disabled or inaccessible, ask whether the owner wants it enabled. If you cannot enable it yourself, explain the exact owner action needed and wait for the owner or choose a fallback only after approval.
-
-Before writing to GitHub or another tracker, show the planned entities and get explicit apply confirmation. After creating or finding GitHub entities, update their bodies with useful GitHub-native relationship links between issues, discussions, wiki pages, projects, and source `.ai-first` paths. Do not write tracker-only relationship links back into normal `.ai-first` memory files unless the owner explicitly approves that tracker as a source of truth.
-
-Until the owner approves a different source of truth, `.ai-first/context` remains the active task source.
+Agents may update `.ai-first/context` when the owner asks for work that changes durable project memory. Ask before converting ideas into approved work, changing priorities, replacing owner-authored files, or writing to external trackers.
